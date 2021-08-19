@@ -1,0 +1,17 @@
+{
+  "name": "cy-koders",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "cy:open": "cypress open"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^8.3.0",
+    "faker": "^5.5.3",
+    "fs-extra": "^10.0.0"
+  }
+}

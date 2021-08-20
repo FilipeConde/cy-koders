@@ -1,9 +1,0 @@
-[
-{
-    "tipo": "valido",
-    "email": "fulano@qa.com",
-    "password": "teste",
-    "status code": 200,
-    "mensagem": "Login realizado com sucesso"
-  }
-]

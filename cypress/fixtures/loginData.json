@@ -4,7 +4,8 @@
         "email"   : "fulano@qa.com",
         "password": "teste",
         "status"  : 200,
-        "mensagem": "Login realizado com sucesso"
+        "propriedade": "message",
+        "message": "Login realizado com sucesso"
     },
 
 
@@ -13,6 +14,7 @@
         "email"   : "fulano@qa.com",
         "password": "teste",
         "status"  : 400,
-        "mensagem": "Email e/ou senha inválidos"
+        "propriedade": "message",
+        "message": "Email e/ou senha inválidos"
     }
 ]

@@ -1,13 +1,13 @@
 /// <reference types ="cypress"/>
 
 
-describe('Post /login', () => {
+describe('Get /usuarios', () => {
     const dataLogin = require ('../../../fixtures/loginData.json')
         dataLogin.forEach(item => {
-            context(`Quando acessar com um usuario do tipo ${item.tipo}`, () => {
+            context(`Quando buscar todos os usuarios ${item.tipo}`, () => {
                 beforeEach(() => {
             }) 
-                it(`Deverá retornar com o schema post-login e status code ${item.status}`, () => {
+                it(`Deverá retornar com o schema get-usuarios ${item.status}`, () => {
                     cy.visit('/') 
                 }) 
         })

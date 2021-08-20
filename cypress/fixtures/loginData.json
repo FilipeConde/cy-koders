@@ -1,0 +1,18 @@
+[
+    {
+        "tipo"    : "valido",
+        "email"   : "fulano@qa.com",
+        "password": "teste",
+        "status"  : 200,
+        "mensagem": "Login realizado com sucesso"
+    },
+
+
+    {
+        "tipo"    : "invalido",
+        "email"   : "fulano@qa.com",
+        "password": "teste",
+        "status"  : 400,
+        "mensagem": "Email e/ou senha inválidos"
+    }
+]

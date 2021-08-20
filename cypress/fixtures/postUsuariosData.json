@@ -1,9 +1,9 @@
 [
   {
-      "tipo": "valido",
-      "status": 201,
-      "propriedade": "message",
-      "message": "Cadastro realizado com sucesso"
+    "tipo": "valido",
+    "status": 201,
+    "propriedade": "message",
+    "message": "Cadastro realizado com sucesso"
   },
   {
     "tipo": "invalido",

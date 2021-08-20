@@ -2,7 +2,7 @@
 
 describe('Post /usuarios', () => {
 
-    const dataUsuarios = require('../../../fixtures/usuariosData.json')
+    const dataUsuarios = require('../../../fixtures/postUsuariosData.json')
 
     dataUsuarios.forEach(itensUsuarios => {
     context(`Quando postar um usuário "${itensUsuarios.tipo}"`, () => {
@@ -20,7 +20,7 @@ describe('Post /usuarios', () => {
                 })
             })
         })
-        afterEach(`E deverá ser retornada a propriedade "${itensUsuarios.propriedade}" com a mensagem "${itensUsuarios.message}"`, () => {
+        it(`E deverá ser retornada a propriedade "${itensUsuarios.propriedade}" com a mensagem "${itensUsuarios.message}"`, () => {
             cy.get('@Response').then( res => {
                 expect(res.body[itensUsuarios.propriedade]).to.equal(itensUsuarios.message)
             })

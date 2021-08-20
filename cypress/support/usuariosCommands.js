@@ -31,15 +31,20 @@ Cypress.Commands.add('postUsuarios', (typeUser) => {
         case 'sem preencher a permissão de adm':
                 body = DynamicFactory.criarUsuario(typeUser)
                 return Rest.httpRequestWithBody('POST', '/usuarios', body)
-    }
-        
-    
-
+    } 
 })
 
-Cypress.Commands.add('getUsuarios', (iduser) => {
+Cypress.Commands.add('getUsuarios', (typeUser, idUser) => {
 
-    let tempurl = `/usuarios/${iduser}`
-    return Rest.httpRequestWithBody('GET', tempurl)
+    switch(typeUser){
+        
+        case 'ID válido':
+            let tempurl = `/usuarios/${idUser}`
+            return Rest.httpRequestWithBody('GET', tempurl)
+        
+        case 'ID inválido':
+            tempurl = `/usuarios/${idUser}`
+            return Rest.httpRequestWithBody('GET', tempurl)
+    }
 
 })

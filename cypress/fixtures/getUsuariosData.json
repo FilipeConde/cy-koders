@@ -1,0 +1,16 @@
+[
+  {
+    "tipo": "ID válido",
+    "status": 200,
+    "propriedade": "email",
+    "expect": " com o email cadastrado do usuario ",
+    "message": ""
+  },
+  {
+    "tipo": "ID inválido",
+    "status": 400,
+    "propriedade": "message",
+    "expect": " com a mensagem: ",
+    "message": "Usuário não encontrado"
+  }
+]

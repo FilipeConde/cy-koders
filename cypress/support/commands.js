@@ -51,8 +51,4 @@ Cypress.Commands.add('contractValidation', (res, schema, status) => {
         }
         return true
     })
-<<<<<<< HEAD
 })
-=======
-})
->>>>>>> main

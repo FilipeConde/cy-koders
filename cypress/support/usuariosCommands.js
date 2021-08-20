@@ -3,8 +3,36 @@ import Rest from '../services/common/_rest.service'
 
 Cypress.Commands.add('postUsuarios', (typeUser) => {
 
-    let body = DynamicFactory.criarUsuario(typeUser)
-    return Rest.httpRequestWithBody('POST', '/usuarios', body)
+    let body
+    let email
+
+    switch(typeUser){
+        case 'valido':
+            body = DynamicFactory.criarUsuario(typeUser)
+            return Rest.httpRequestWithBody('POST', '/usuarios', body)
+        
+        case 'invalido':
+            body = Rest.bodyInvalidEmail(typeUser)
+            return Rest.httpRequestWithBody('POST', '/usuarios', body)
+        
+        case 'sem preencher o nome':
+            body = DynamicFactory.criarUsuario(typeUser)
+            return Rest.httpRequestWithBody('POST', '/usuarios', body)
+
+        case 'sem preencher o email':
+            body = DynamicFactory.criarUsuario(typeUser)
+            return Rest.httpRequestWithBody('POST', '/usuarios', body)
+
+        case 'sem preencher a senha':
+            body = DynamicFactory.criarUsuario(typeUser)
+            return Rest.httpRequestWithBody('POST', '/usuarios', body)
+
+        case 'sem preencher a permissão de adm':
+                body = DynamicFactory.criarUsuario(typeUser)
+                return Rest.httpRequestWithBody('POST', '/usuarios', body)
+    }
+        
+    
 
 })
 

@@ -1,3 +1,4 @@
+import DynamicFactory from '../../fixtures/factory/dynamic'
 export default class Rest {
         
     static httpRequestWithBody(method, endpoint, body, headers = null, failOnStatusCode = false, timeout = Cypress.env      ('global_timeout')){
@@ -19,6 +20,18 @@ export default class Rest {
             timeout: timeout,
             headers: headers
         })
+    }
+
+    static bodyInvalidEmail(typeUser){
+
+        let body = DynamicFactory.criarUsuario(typeUser)
+        Rest.httpRequestWithBody('POST', '/usuarios', body)
+        let email = body.email
+        body = DynamicFactory.criarUsuario(typeUser)
+        body.email = email
+        
+        return body
+
     }
 
 }

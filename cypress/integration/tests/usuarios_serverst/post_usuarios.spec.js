@@ -1,13 +1,11 @@
 /// <reference types ="cypress"/>
 
-import Rest from '../../../services/common/_rest.service'
-
 describe('Post /usuarios', () => {
 
     const dataUsuarios = require('../../../fixtures/usuariosData.json')
 
     dataUsuarios.forEach(itensUsuarios => {
-    context(`Quando postar usuarios do tipo "${itensUsuarios.tipo}"`, () => {
+    context(`Quando postar um usuário "${itensUsuarios.tipo}"`, () => {
         beforeEach(() => {
             cy.postUsuarios(itensUsuarios.tipo).then( post_response => {
                 cy.wrap(post_response).as('Response')

@@ -18,13 +18,43 @@ export default class DynamicFactory {
         switch(typeUser){
 
             case 'valido':
-            case 'invalid':
+            case 'invalido':
                 return {
                     "nome": nomeFaker,
                     "email": faker.internet.email(),
                     "password": faker.internet.password(),
                     "administrador": admin.toString(),
                 }
+            case 'sem preencher o nome':
+                return {
+                    "nome": "",
+                    "email": faker.internet.email(),
+                    "password": faker.internet.password(),
+                    "administrador": admin.toString(),
+                }
+            case 'sem preencher o email':
+                return {
+                    "nome": nomeFaker,
+                    "email": "",
+                    "password": faker.internet.password(),
+                    "administrador": admin.toString(),
+                }
+            case 'sem preencher a senha':
+                return {
+                    "nome": nomeFaker,
+                    "email": faker.internet.email(),
+                    "password": "",
+                    "administrador": admin.toString(),
+                }
+            case 'sem preencher a permissão de adm':
+                return {
+                    "nome": nomeFaker,
+                    "email": faker.internet.email(),
+                    "password": faker.internet.password(),
+                    "administrador": "",
+                }
+                    
+                
         }    
 
     }

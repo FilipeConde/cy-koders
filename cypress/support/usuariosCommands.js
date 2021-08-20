@@ -1,5 +1,6 @@
 import DynamicFactory from '../fixtures/factory/dynamic'
 import Rest from '../services/common/_rest.service'
+import UserServ from '../services/usuarios.service'
 
 Cypress.Commands.add('postUsuarios', (typeUser) => {
 
@@ -12,7 +13,7 @@ Cypress.Commands.add('postUsuarios', (typeUser) => {
             return Rest.httpRequestWithBody('POST', '/usuarios', body)
         
         case 'invalido':
-            body = Rest.bodyInvalidEmail(typeUser)
+            body = UserServ.bodyInvalidEmail(typeUser)
             return Rest.httpRequestWithBody('POST', '/usuarios', body)
         
         case 'sem preencher o nome':

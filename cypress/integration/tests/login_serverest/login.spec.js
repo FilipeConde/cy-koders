@@ -1,13 +1,15 @@
 /// <reference types ="cypress"/>
 
-describe('Realizar login', () => {
-    context('Dado que esteja na pagina home do site sauce.demo', () => {
 
-            it(`Quando preencher os campos com dados do tipo`, () => {
-                
-                cy.visit('/')
-         
+describe('Post /login', () => {
+    const dataLogin = require ('../../../fixtures/schemas/post_login/loginData.json')
+    context(`Quando acessar com um usuario do tipo ${item.tipo}`, () => {
+       dataLogin.forEach(item => {
+            it(`Deverá retornar  `, () => {
+               
+
+            })             
         }) 
     })
            
-})    
+})     

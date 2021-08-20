@@ -7,7 +7,7 @@ describe('Get /usuarios', () => {
             context(`Quando buscar todos os usuarios ${item.tipo}`, () => {
                 beforeEach(() => {
             }) 
-                it(`Deverá retornar com o schema get-usuarios ${item.status}`, () => {
+                it(`Deverá retornar com o schema get-usuarios e status code ${item.status}`, () => {
                     cy.visit('/') 
                 }) 
         })

@@ -10,7 +10,7 @@ describe('Post /login', () => {
                         cy.wrap(post_response).as('Response')
                     })
                 }) 
-                it(`Deverá retornar com o schema post-login e status code ${itemLogin.status}`, () => {
+                it.only(`Deverá retornar com o schema post-login e status code ${itemLogin.status}`, () => {
                     let status = itemLogin.status
                     cy.get('@Response').then(res =>{
                         cy.contractValidation(res, 'post-login', status).then (valid =>{

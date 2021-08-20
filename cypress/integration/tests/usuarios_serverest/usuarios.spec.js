@@ -1,15 +1,31 @@
 /// <reference types ="cypress"/>
 
+describe('Post /usuarios', () => {
 
-describe('Get /usuarios', () => {
-    const dataLogin = require ('../../../fixtures/loginData.json')
-        dataLogin.forEach(item => {
-            context(`Quando buscar todos os usuarios ${item.tipo}`, () => {
-                beforeEach(() => {
-            }) 
-                it(`Deverá retornar com o schema get-usuarios e status code ${item.status}`, () => {
-                    cy.visit('/') 
-                }) 
+    const dataUsuarios = require('../../../fixtures/usuariosData.json')
+
+    dataUsuarios.forEach(itensUsuarios => {
+    context(`Quando postar um usuário "${itensUsuarios.tipo}"`, () => {
+        beforeEach(() => {
+            cy.postUsuarios(itensUsuarios.tipo).then( post_response => {
+                cy.wrap(post_response).as('Response')
+            })
         })
-    })             
+        it(`Então deverá ser retornado o schema "post-usuarios" com o status ${itensUsuarios.status}`, () => {
+            let status = itensUsuarios.status
+            cy.get('@Response').then( res => {
+                cy.contractValidation( res, 'post-usuarios', status ).then( valid => {
+                    expect(valid).to.be.true
+                    expect(res.status).to.equal(status)
+                })
+            })
+        })
+        afterEach(`E deverá ser retornada a propriedade "${itensUsuarios.propriedade}" com a mensagem "${itensUsuarios.message}"`, () => {
+            cy.get('@Response').then( res => {
+                expect(res.body[itensUsuarios.propriedade]).to.equal(itensUsuarios.message)
+            })
+
+        })
+        })
+    })
 })

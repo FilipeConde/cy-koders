@@ -7,3 +7,4 @@ Cypress.Commands.add('postLogin', (typeLogin) => {
     return Rest.httpRequestWithBody('POST', '/login', body)
 
 })
+

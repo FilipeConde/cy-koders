@@ -1,4 +1,3 @@
-import DynamicFactory from '../../fixtures/factory/dynamic'
 export default class Rest {
         
     static httpRequestWithBody(method, endpoint, body, headers = null, failOnStatusCode = false, timeout = Cypress.env      ('global_timeout')){

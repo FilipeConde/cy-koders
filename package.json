@@ -1,7 +1,6 @@
 {
   "name": "cy-koders",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "cy:open": "cypress open"
@@ -10,8 +9,18 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "ajv": "^8.6.2",
     "cypress": "^8.3.0",
     "faker": "^5.5.3",
     "fs-extra": "^10.0.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FilipeConde/cy-koders.git"
+  },
+  "bugs": {
+    "url": "https://github.com/FilipeConde/cy-koders/issues"
+  },
+  "homepage": "https://github.com/FilipeConde/cy-koders#readme",
+  "description": ""
 }

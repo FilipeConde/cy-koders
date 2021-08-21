@@ -21,7 +21,7 @@ Cypress.Commands.add('postLogin', (typeLogin) => {
             })
             break;
         case 'invalido':
-        case 'sem preencher a senha':
+        case 'sem preencqher a senha':
         case 'sem preencher o email':
             let body = DynamicFactory.realizarLogin(typeLogin)
             return Rest.httpRequestWithBody('POST', '/login', body)

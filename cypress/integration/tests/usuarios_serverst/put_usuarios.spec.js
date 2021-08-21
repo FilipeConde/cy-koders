@@ -2,19 +2,19 @@
 
 describe('Post /usuarios', () => {
 
-    const dataUsuarios = require('../../../fixtures/postUsuariosData.json')
+    const dataUsuarios = require('../../../fixtures/putUsuariosData.json')
 
     dataUsuarios.forEach(itensUsuarios => {
-    context(`Quando postar um usuário "${itensUsuarios.tipo}"`, () => {
+    context(`Quando editar um usuário "${itensUsuarios.tipo}"`, () => {
         beforeEach(() => {
-            cy.postUsuarios(itensUsuarios.tipo).then( post_response => {
+            cy.putUsuarios(itensUsuarios.tipo).then( post_response => {
                 cy.wrap(post_response).as('Response')
             })
         })
-        it(`Então deverá ser retornado o schema 'post-usuarios' com o status ${itensUsuarios.status}`, () => {
+        it(`Então deverá ser retornado o schema 'put-usuarios' com o status ${itensUsuarios.status}`, () => {
             let status = itensUsuarios.status
             cy.get('@Response').then( res => {
-                cy.contractValidation( res, 'post-usuarios', status ).then( valid => {
+                cy.contractValidation( res, 'put-usuarios', status ).then( valid => {
                     expect(valid).to.be.true
                     expect(res.status).to.equal(status)
                 })

@@ -1,0 +1,43 @@
+[
+  {
+    "tipo": "valido",
+    "status": 200,
+    "propriedade": "message",
+    "message": "Registro alterado com sucesso"
+  },
+  {
+    "tipo": "invalido",
+    "status": 400,
+    "propriedade": "message",
+    "message": "Este email já está sendo usado"
+  },
+  {
+    "tipo": "inexistente",
+    "status": 201,
+    "propriedade": "message",
+    "message": "Cadastro realizado com sucesso"
+  },{
+    "tipo": "sem preencher o nome",
+    "status": 400,
+    "propriedade": "nome",
+    "message": "nome não pode ficar em branco"
+  },
+  {
+    "tipo": "sem preencher o email",
+    "status": 400,
+    "propriedade": "email",
+    "message": "email não pode ficar em branco"
+  },
+  {
+    "tipo": "sem preencher a senha",
+    "status": 400,
+    "propriedade": "password",
+    "message": "password não pode ficar em branco"
+  },
+  {
+    "tipo": "sem preencher a permissão de adm",
+    "status": 400,
+    "propriedade": "administrador",
+    "message": "administrador deve ser 'true' ou 'false'"
+  }
+]

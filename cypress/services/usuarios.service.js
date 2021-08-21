@@ -12,7 +12,13 @@ export default class UserServ {
         body.email = email
         
         return body
-
     }
 
+    static giveMeValidUserID(){
+
+        return cy.postUsuarios('valido').then( post_response => {                
+            cy.wrap(post_response).as('post_response')
+        })
+    }
+    
 }

@@ -1,9 +1,9 @@
 [
   {
-      "tipo": "valido",
-      "status": 201,
-      "propriedade": "message",
-      "message": "Cadastro realizado com sucesso"
+    "tipo": "valido",
+    "status": 200,
+    "propriedade": "message",
+    "message": "Registro alterado com sucesso"
   },
   {
     "tipo": "invalido",
@@ -12,6 +12,11 @@
     "message": "Este email já está sendo usado"
   },
   {
+    "tipo": "inexistente",
+    "status": 201,
+    "propriedade": "message",
+    "message": "Cadastro realizado com sucesso"
+  },{
     "tipo": "sem preencher o nome",
     "status": 400,
     "propriedade": "nome",

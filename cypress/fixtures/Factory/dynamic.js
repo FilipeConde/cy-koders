@@ -1,13 +1,10 @@
 import faker from 'faker'
 faker.locale = 'pt_BR'
 
-const nomeFaker = `${faker.name.firstName()} ${faker.name.lastName()} ${faker.name.lastName()}`
 const produtoFaker = `${faker.commerce.product()} ${faker.commerce.color()} da ${faker.finance.currencyCode()} ${faker.name.jobArea()}`
    
-
 export default class DynamicFactory {
 
-    
     static geradorID(){
         const userID = faker.random.alphaNumeric(16)
         return userID
@@ -20,7 +17,7 @@ export default class DynamicFactory {
             case 'valido':
             case 'invalido':
                 return {
-                    "nome": nomeFaker,
+                    "nome": `${faker.name.firstName()} ${faker.name.lastName()} ${faker.name.lastName()}`,
                     "email": faker.internet.email(),
                     "password": faker.internet.password(),
                     "administrador": admin.toString(),
@@ -34,21 +31,21 @@ export default class DynamicFactory {
                 }
             case 'sem preencher o email':
                 return {
-                    "nome": nomeFaker,
+                    "nome": `${faker.name.firstName()} ${faker.name.lastName()} ${faker.name.lastName()}`,
                     "email": "",
                     "password": faker.internet.password(),
                     "administrador": admin.toString(),
                 }
             case 'sem preencher a senha':
                 return {
-                    "nome": nomeFaker,
+                    "nome": `${faker.name.firstName()} ${faker.name.lastName()} ${faker.name.lastName()}`,
                     "email": faker.internet.email(),
                     "password": "",
                     "administrador": admin.toString(),
                 }
             case 'sem preencher a permissão de adm':
                 return {
-                    "nome": nomeFaker,
+                    "nome": `${faker.name.firstName()} ${faker.name.lastName()} ${faker.name.lastName()}`,
                     "email": faker.internet.email(),
                     "password": faker.internet.password(),
                     "administrador": "",

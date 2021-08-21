@@ -1,0 +1,23 @@
+[
+  {
+    "tipo": "ID válido",
+    "status": 200,
+    "propriedade": "email",
+    "expect": " com o ",
+    "message": "email cadastrado do usuário"
+  },
+  {
+    "tipo": "ID inválido",
+    "status": 400,
+    "propriedade": "message",
+    "expect": " com a mensagem: ",
+    "message": "Usuário não encontrado"
+  },
+  {
+    "tipo": "nenhum ID",
+    "status": 200,
+    "propriedade": "quantidade",
+    "expect": " exibindo o total de usuários cadastrados maior que ",
+    "message": 1
+  }
+]

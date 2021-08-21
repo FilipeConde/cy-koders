@@ -18,20 +18,11 @@ Cypress.Commands.add('postUsuarios', (typeUser) => {
             return Rest.httpRequestWithBody('POST', URL_USUARIOS, body)
         
         case 'sem preencher o nome':
-            body = DynamicFactory.criarUsuario(typeUser)
-            return Rest.httpRequestWithBody('POST', URL_USUARIOS, body)
-
         case 'sem preencher o email':
-            body = DynamicFactory.criarUsuario(typeUser)
-            return Rest.httpRequestWithBody('POST', URL_USUARIOS, body)
-
         case 'sem preencher a senha':
+        case 'sem preencher a permissão de adm':
             body = DynamicFactory.criarUsuario(typeUser)
             return Rest.httpRequestWithBody('POST', URL_USUARIOS, body)
-
-        case 'sem preencher a permissão de adm':
-                body = DynamicFactory.criarUsuario(typeUser)
-                return Rest.httpRequestWithBody('POST', URL_USUARIOS, body)
     } 
 })
 
@@ -97,29 +88,8 @@ Cypress.Commands.add('putUsuarios', (typeUser) => {
             return Rest.httpRequestWithBody('PUT', tempurl, body)
         
         case 'sem preencher o nome':
-            UserServ.giveMeValidUserID().then( post_response => {
-                let tempurl = `${URL_USUARIOS}/${post_response.body._id}`
-                body = DynamicFactory.criarUsuario(typeUser)
-                return Rest.httpRequestWithBody('PUT', tempurl, body)
-            })
-            break;
-
         case 'sem preencher o email':
-            UserServ.giveMeValidUserID().then( post_response => {
-                let tempurl = `${URL_USUARIOS}/${post_response.body._id}`
-                body = DynamicFactory.criarUsuario(typeUser)
-                return Rest.httpRequestWithBody('PUT', tempurl, body)
-            })
-            break;
-
         case 'sem preencher a senha':
-            UserServ.giveMeValidUserID().then( post_response => {
-                let tempurl = `${URL_USUARIOS}/${post_response.body._id}`
-                body = DynamicFactory.criarUsuario(typeUser)
-                return Rest.httpRequestWithBody('PUT', tempurl, body)
-            })
-            break;
-
         case 'sem preencher a permissão de adm':
             UserServ.giveMeValidUserID().then( post_response => {
                 let tempurl = `${URL_USUARIOS}/${post_response.body._id}`

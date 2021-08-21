@@ -49,10 +49,33 @@ export default class DynamicFactory {
                     "email": faker.internet.email(),
                     "password": faker.internet.password(),
                     "administrador": "",
-                }
-                    
-                
-        }    
-
+                } 
+        }
     }
+    
+    static realizarLogin(typeLogin){
+
+        switch(typeLogin){
+
+            case 'valido':
+            case 'invalido':
+                return {
+                    "email"   : faker.internet.email(),
+                    "password": faker.internet.password(),
+                }
+            case 'sem preencher a senha':
+                return {
+                    "email"   : faker.internet.email(),
+                    "password": "",
+                }
+            case 'sem preencher o email':
+                return {
+                    "email"   : "",
+                    "password": faker.internet.password(),
+                }
+        }         
+    }    
+
+    
+
 }

@@ -20,5 +20,5 @@ export default class UserServ {
             cy.wrap(post_response).as('post_response')
         })
     }
-    
+       
 }

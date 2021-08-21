@@ -7,8 +7,6 @@
         "propriedade": "message",
         "message": "Login realizado com sucesso"
     },
-
-
     {
         "tipo"    : "invalido",
         "email"   : "fulano@qa.com",
@@ -16,5 +14,17 @@
         "status"  : 401,
         "propriedade": "message",
         "message": "Email e/ou senha inválidos"
+    },
+    {
+        "tipo"    : "sem preencher a senha",
+        "status"  : 400,
+        "propriedade": "password",
+        "message": "password não pode ficar em branco"
+    },
+    {
+        "tipo"    : "sem preencher o email",
+        "status"  : 400,
+        "propriedade": "email",
+        "message": "email não pode ficar em branco"
     }
 ]

@@ -12,8 +12,9 @@ export default class DynamicFactory {
     static criarUsuario(typeUser, admin = true){
 
         switch(typeUser){
-
+            
             case 'valido':
+            case 'ID válido':
             case 'invalido':
             case 'com permissão':    
                 return {
@@ -56,7 +57,9 @@ export default class DynamicFactory {
                     "email": faker.internet.email(),
                     "password": faker.internet.password(),
                     "administrador": "false",
-                } 
+                }
+            default:
+                return { notfound: cy.log('DynamicFactory.criarUsuario - typeUser não encontrado') }
         }
     }
     

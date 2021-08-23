@@ -10,6 +10,7 @@ Cypress.Commands.add('postUsuarios', (typeUser) => {
 
     switch(typeUser){
         case 'valido':
+        case 'ID válido':
         case 'com permissão':  
         case 'sem permissão':      
             body = DynamicFactory.criarUsuario(typeUser)
@@ -25,6 +26,9 @@ Cypress.Commands.add('postUsuarios', (typeUser) => {
         case 'sem preencher a permissão de adm':
             body = DynamicFactory.criarUsuario(typeUser)
             return Rest.httpRequestWithBody('POST', URL_USUARIOS, body)
+
+        default:
+            return { notfound: cy.log('cy.postUsuarios - typeUser não encontrado') }
     } 
 })
 
@@ -47,8 +51,11 @@ Cypress.Commands.add('getUsuarios', (typeUser) => {
             return Rest.httpRequestWithoutBody('GET', tempurl)
         
         case 'nenhum ID':
-            UserServ.giveMeValidUserID()
+            UserServ.giveMeValidUserID('valido')
             return Rest.httpRequestWithoutBody('GET', URL_USUARIOS)
+
+        default:
+            return { notfound: cy.log('cy.getUsuarios - typeUser não encontrado') }
     }
 })
 
@@ -71,7 +78,7 @@ Cypress.Commands.add('putUsuarios', (typeUser) => {
     switch(typeUser){
         
         case 'valido':            
-            UserServ.giveMeValidUserID().then( post_response => {
+            UserServ.giveMeValidUserID('valido').then( post_response => {
                 let tempurl = `${URL_USUARIOS}/${post_response.body._id}`
                 body = DynamicFactory.criarUsuario(typeUser)
                 return Rest.httpRequestWithBody('PUT', tempurl, body)
@@ -79,7 +86,7 @@ Cypress.Commands.add('putUsuarios', (typeUser) => {
             break;
         
         case 'invalido':
-            UserServ.giveMeValidUserID().then( post_response => {
+            UserServ.giveMeValidUserID(typeUser).then( post_response => {
                 let tempurl = `${URL_USUARIOS}/${post_response.body._id}`
                 body = UserServ.bodyInvalidEmail(typeUser)
                 return Rest.httpRequestWithBody('PUT', tempurl, body)
@@ -96,7 +103,7 @@ Cypress.Commands.add('putUsuarios', (typeUser) => {
         case 'sem preencher o email':
         case 'sem preencher a senha':
         case 'sem preencher a permissão de adm':
-            UserServ.giveMeValidUserID().then( post_response => {
+            UserServ.giveMeValidUserID('valido').then( post_response => {
                 let tempurl = `${URL_USUARIOS}/${post_response.body._id}`
                 body = DynamicFactory.criarUsuario(typeUser)
                 return Rest.httpRequestWithBody('PUT', tempurl, body)

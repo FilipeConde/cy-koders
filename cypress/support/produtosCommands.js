@@ -9,9 +9,8 @@ Cypress.Commands.add('postProdutos', (typeProd, auth) => {
     let body
 
     switch(typeProd){
-        
+
         case 'valido':
-        case 'sem permissão':
         case 'sem preencher o nome':   
         case 'com preço menor que 1':
         case 'sem preencher a descrição':
@@ -22,6 +21,9 @@ Cypress.Commands.add('postProdutos', (typeProd, auth) => {
         case 'invalido':
             body = ProdServ.bodyInvalidProdName(typeProd, auth)
             return Rest.httpRequestWithBody('POST', URL_PRODUTOS, body, { authorization: auth })
+
+        default:
+            return { notfound: cy.log('cy.postProdutos - typeProd não encontrado'), notfound: 'cy.postProdutos - typeProd não encontrado' }
         
     } 
 })

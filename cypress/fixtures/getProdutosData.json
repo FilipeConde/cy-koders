@@ -2,7 +2,7 @@
     {
       "tipo": "ID válido",
       "status": 200,
-      "propriedade": "id",
+      "propriedade": "message",
       "expect": " com o ",
       "message": "id do produto cadastrado e detalhes do item"
     },
@@ -10,7 +10,7 @@
     {
         "tipo": "ID inválido",
         "status": 400,
-        "propriedade": "id",
+        "propriedade": "message",
         "expect": " com a mensagem ",
         "message": "Produto não encontrado"
       }

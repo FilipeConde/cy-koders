@@ -1,15 +1,4 @@
-<<<<<<< HEAD
-
-
-export default class ProdServ {
-
-    static giveMeValidProductID(){
-
-        return cy.getProdutos('valido').then( post_response => {                
-            cy.wrap(post_response).as('post_response')
-        })
-    }    
-=======
+    
 import DynamicFactory from '../fixtures/factory/dynamic'
 import Rest from '../services/common/_rest.service'
 
@@ -25,6 +14,12 @@ export default class ProdServ {
         
         return body
     }
+
+    static giveMeValidProductID(){
+
+        return cy.getProdutos('valido').then( post_response => {                
+            cy.wrap(post_response).as('post_response')
+        })
+    }
        
->>>>>>> e93f87972a090df81ffcf587c3e926b10ada2337
 }

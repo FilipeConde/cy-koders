@@ -17,12 +17,14 @@ describe('Get /produtos', () => {
                 cy.contractValidation( res, 'get-produtos', status ).then( valid => {
                     expect(valid).to.be.true
                     expect(res.status).to.equal(status)
+                    
                 })
+                
             })
         })
         it(`E deverá ser retornada a propriedade '${itensProdutos.propriedade}'${itensProdutos.expect}"${itensProdutos.message}"`, () => {
             cy.get('@Response').then( res => {
-                cy.validacaoGetUsuarios(itensProdutos.tipo, res, itensProdutos)
+                cy.validacaoGetProdutos(itensProdutos.tipo, res, itensProdutos)
             })
         })
     })

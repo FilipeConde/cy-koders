@@ -1,5 +1,5 @@
-<<<<<<< HEAD
-
+import DynamicFactory from '../fixtures/factory/dynamic'
+import Rest from '../services/common/_rest.service'
 
 export default class ProdServ {
 
@@ -9,11 +9,8 @@ export default class ProdServ {
             cy.wrap(post_response).as('post_response')
         })
     }    
-=======
-import DynamicFactory from '../fixtures/factory/dynamic'
-import Rest from '../services/common/_rest.service'
 
-export default class ProdServ {
+
 
     static bodyInvalidProdName(typeProd, auth){
 
@@ -26,5 +23,4 @@ export default class ProdServ {
         return body
     }
        
->>>>>>> e93f87972a090df81ffcf587c3e926b10ada2337
 }

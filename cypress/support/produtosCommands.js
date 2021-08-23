@@ -33,16 +33,7 @@ Cypress.Commands.add('postProdutos', (typeProd, auth) => {
 Cypress.Commands.add('getProdutos', (typeProd) => {
     
    
-   
-       switch(typeProd){    
-          
-   
-           case 'ID válido': 
-              return ProdServ.giveMeValidProductID().then( post_response => {
-              let tempurl = `${URL_PRODUTOS}/${post_response}`
-               Rest.httpRequestWithoutBody('GET', tempurl)
-  
-   let body
+       let body
        switch(typeProd){    
             
    
@@ -56,7 +47,7 @@ Cypress.Commands.add('getProdutos', (typeProd) => {
                let idProd = DynamicFactory.geradorID()
                let tempurl = `${URL_PRODUTOS}/${idProd}`
                return Rest.httpRequestWithoutBody('GET', tempurl)
-           
+         
        }
    })
 

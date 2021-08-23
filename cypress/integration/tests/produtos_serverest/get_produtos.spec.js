@@ -16,7 +16,7 @@ describe('Get /produtos', () => {
             cy.get('@Response').then( res => {
                 cy.contractValidation( res, 'get-produtos', status ).then( valid => {
                     expect(valid).to.be.true
-                    expect(res.status).to.equal(status)
+                    expect(status).to.equal(status)
                     
                 })
                 

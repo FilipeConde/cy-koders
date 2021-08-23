@@ -10,6 +10,8 @@ Cypress.Commands.add('postUsuarios', (typeUser) => {
 
     switch(typeUser){
         case 'valido':
+        case 'com permissão':  
+        case 'sem permissão':      
             body = DynamicFactory.criarUsuario(typeUser)
             return Rest.httpRequestWithBody('POST', URL_USUARIOS, body)
         
@@ -30,8 +32,11 @@ Cypress.Commands.add('getUsuarios', (typeUser) => {
 
     switch(typeUser){     
 
-        case 'ID válido':         
-            return UserServ.giveMeValidUserID().then( post_response => {
+        case 'ID válido':
+        case 'valido':
+        case 'com permissão':
+        case 'sem permissão':         
+            return UserServ.giveMeValidUserID(typeUser).then( post_response => {
                 let tempurl = `${URL_USUARIOS}/${post_response.body._id}`
                 Rest.httpRequestWithoutBody('GET', tempurl)
             })

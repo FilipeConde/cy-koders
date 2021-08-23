@@ -14,9 +14,9 @@ export default class UserServ {
         return body
     }
 
-    static giveMeValidUserID(){
+    static giveMeValidUserID(typeUser){
 
-        return cy.postUsuarios('valido').then( post_response => {                
+        return cy.postUsuarios(typeUser).then( post_response => {                
             cy.wrap(post_response).as('post_response')
         })
     }

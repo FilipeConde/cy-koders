@@ -1,0 +1,66 @@
+[
+    {
+        "auth": "valido",
+        "adm": "com permissão",
+        "tipo": "valido",
+        "status": 201,
+        "propriedade": "message",
+        "message": "Cadastro realizado com sucesso"
+    },    
+    {
+        "auth": "valido",
+        "adm": "com permissão",
+        "tipo": "invalido",
+        "status": 400,
+        "propriedade": "message",
+        "message": "Já existe produto com esse nome"
+    },
+    {
+        "auth": "inválido",
+        "adm": "com permissão",
+        "tipo": "valido",
+        "status": 401,
+        "propriedade": "message",
+        "message": "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais"
+    },
+    {
+        "auth": "valido",
+        "adm": "sem permissão",
+        "tipo": "valido",
+        "status": 403,
+        "propriedade": "message",
+        "message": "Rota exclusiva para administradores"
+    },
+    {
+        "auth": "valido",
+        "adm": "com permissão",
+        "tipo": "sem preencher o nome",
+        "status": 400,
+        "propriedade": "nome",
+        "message": "nome não pode ficar em branco"
+    },
+    {
+        "auth": "valido",
+        "adm": "com permissão",
+        "tipo": "com preço menor que 1",
+        "status": 400,
+        "propriedade": "preco",
+        "message": "preco deve ser um número positivo"
+    },
+    {
+        "auth": "valido",
+        "adm": "com permissão",
+        "tipo": "sem preencher a descrição",
+        "status": 400,
+        "propriedade": "descricao",
+        "message": "descricao não pode ficar em branco"
+    },
+    {
+        "auth": "valido",
+        "adm": "com permissão",
+        "tipo": "com quantidade menor que 0",
+        "status": 400,
+        "propriedade": "quantidade",
+        "message": "quantidade deve ser maior ou igual a 0"
+    }
+]

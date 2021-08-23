@@ -1,6 +1,6 @@
 /// <reference types ="cypress"/>
 
-describe('Post /usuarios', () => {
+describe('Pust /usuarios', () => {
 
     const dataUsuarios = require('../../../fixtures/putUsuariosData.json')
 

@@ -9,6 +9,8 @@ export default class ProdServ {
             cy.wrap(post_response).as('post_response')
         })
     }    
+    
+
 
 
 
@@ -21,6 +23,13 @@ export default class ProdServ {
         body.nome = prodNome
         
         return body
+    }
+
+    static giveMeValidProductID(){
+
+        return cy.getProdutos('valido').then( post_response => {                
+            cy.wrap(post_response).as('post_response')
+        })
     }
        
 }

@@ -41,6 +41,15 @@ Cypress.Commands.add('getProdutos', (typeProd) => {
               return ProdServ.giveMeValidProductID().then( post_response => {
               let tempurl = `${URL_PRODUTOS}/${post_response}`
                Rest.httpRequestWithoutBody('GET', tempurl)
+  
+   let body
+       switch(typeProd){    
+            
+   
+           case 'ID válido': 
+                return ProdServ.giveMeValidProductID().then( post_response => {
+                let tempurl = `${URL_PRODUTOS}/${post_response}`
+                Rest.httpRequestWithBody('GET', tempurl, body)
             })
    
            case 'ID inválido':
@@ -50,17 +59,6 @@ Cypress.Commands.add('getProdutos', (typeProd) => {
            
        }
    })
-
-
-Cypress.Commands.add('validacaoGetProdutos', (typeProd, res, itensProdutos) => {
-
-    switch(typeProd){        
-        case 'ID válido':
-            return expect(res.body[itensProdutos.propriedade]).exist
-        case 'ID inválido':
-            return expect(res.body[itensProdutos.propriedade]).to.equal(itensProdutos.message)
-    }
-})    
 
 
 Cypress.Commands.add('putProdutos', (typeProd, auth) => {
@@ -96,4 +94,14 @@ Cypress.Commands.add('putProdutos', (typeProd, auth) => {
             return { notfound: cy.log('cy.putProdutos - typeProd não encontrado'), notfound: 'cy.putProdutos - typeProd não encontrado' }
         
     } 
+})
+
+Cypress.Commands.add('validacaoGetProdutos', (typeProd, res, itensProdutos) => {
+
+    switch(typeProd){        
+        case 'ID válido':
+            return expect(res.body[itensProdutos.propriedade]).exist
+        case 'ID inválido':
+            return expect(res.body[itensProdutos.propriedade]).to.equal(itensProdutos.message)
+    }   
 })

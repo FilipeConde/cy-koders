@@ -4,7 +4,15 @@
       "status": 200,
       "propriedade": "id",
       "expect": " com o ",
-      "message": "id do produto cadastrado"
-    }
+      "message": "id do produto cadastrado e detalhes do item"
+    },
+
+    {
+        "tipo": "ID inválido",
+        "status": 400,
+        "propriedade": "id",
+        "expect": " com a mensagem ",
+        "message": "Produto não encontrado"
+      }
 ]
    

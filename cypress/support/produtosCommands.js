@@ -9,14 +9,14 @@ const URL_PRODUTOS = '/produtos'
 
 Cypress.Commands.add('getProdutos', (typeProd) => {
     
-    let body
+ let body
 
     switch(typeProd){    
          
 
         case 'ID válido': 
 
-            body = DynamicFactory.(typeProd)        
+            body = DynamicFactory.criarProdutos(typeProd)        
             return ProdServ.giveMeValidProductID().then( post_response => {
                 let tempurl = `${URL_PRODUTOS}/${post_response.body._id}`
                 Rest.httpRequestWithoutBody('GET', tempurl)
@@ -27,20 +27,15 @@ Cypress.Commands.add('getProdutos', (typeProd) => {
             let tempurl = `${URL_PRODUTOS}/${idProd}`
             return Rest.httpRequestWithoutBody('GET', tempurl)
         
-        case 'nenhum ID':
-            ProdServ.giveMeValidProductID()
-            return Rest.httpRequestWithoutBody('GET', URL_PRODUTOS)
     }
 })
 
-Cypress.Commands.add('validacaoGetProdutos', (typeUser, res, itensProdutos) => {
+Cypress.Commands.add('validacaoGetProdutos', (typeProd, res, itensProdutos) => {
 
-    switch(typeUser){        
+    switch(typeProd){        
         case 'ID válido':
             return expect(res.body[itensProdutos.propriedade]).exist
         case 'ID inválido':
             return expect(res.body[itensProdutos.propriedade]).to.equal(itensProdutos.message)
-        case 'nenhum ID':
-            return expect(res.body[itensProdutos.propriedade]).to.greaterThan(itensProdutos.message)
     }
 })

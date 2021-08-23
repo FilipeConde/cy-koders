@@ -1,7 +1,6 @@
 import faker from 'faker'
 faker.locale = 'pt_BR'
 
-const produtoFaker = `${faker.commerce.product()} ${faker.commerce.color()} da ${faker.finance.currencyCode()} ${faker.name.jobArea()}`
    
 export default class DynamicFactory {
 
@@ -13,9 +12,11 @@ export default class DynamicFactory {
     static criarUsuario(typeUser, admin = true){
 
         switch(typeUser){
-
+            
             case 'valido':
+            case 'ID válido':
             case 'invalido':
+            case 'com permissão':    
                 return {
                     "nome": `${faker.name.firstName()} ${faker.name.lastName()} ${faker.name.lastName()}`,
                     "email": faker.internet.email(),
@@ -49,7 +50,16 @@ export default class DynamicFactory {
                     "email": faker.internet.email(),
                     "password": faker.internet.password(),
                     "administrador": "",
-                } 
+                }
+            case 'sem permissão':    
+                return {
+                    "nome": `${faker.name.firstName()} ${faker.name.lastName()} ${faker.name.lastName()}`,
+                    "email": faker.internet.email(),
+                    "password": faker.internet.password(),
+                    "administrador": "false",
+                }
+            default:
+                return { notfound: cy.log('DynamicFactory.criarUsuario - typeUser não encontrado') }
         }
     }
     
@@ -74,6 +84,7 @@ export default class DynamicFactory {
                     "password": faker.internet.password(),
                 }
         }         
+<<<<<<< HEAD
     }    
 
 
@@ -121,7 +132,53 @@ export default class DynamicFactory {
 
     }
 
+=======
+    }
+>>>>>>> e93f87972a090df81ffcf587c3e926b10ada2337
     
+    static criarProdutos(typeProd){
+
+        switch(typeProd){
+
+            case 'valido':
+            case 'invalido':
+                return {
+                    "nome": `${faker.commerce.product()} ${faker.address.cityName()} ${faker.address.cityName()}`,
+                    "preco": faker.datatype.number({'min': 10, 'max': 9999}),
+                    "descricao": faker.lorem.sentence(),
+                    "quantidade": faker.datatype.number({'min': 4, 'max': 800})
+                }
+            case 'sem preencher o nome':
+                return{
+                    "nome": "",
+                    "preco": faker.datatype.number({'min': 10, 'max': 9999}),
+                    "descricao": faker.lorem.sentence(),
+                    "quantidade": faker.datatype.number({'min': 4, 'max': 800})
+                }    
+            case 'com preço menor que 1':
+                return{
+                    "nome": `${faker.commerce.product()} ${faker.address.cityName()} ${faker.address.cityName()}`,
+                    "preco": faker.datatype.number({'max': 0}),
+                    "descricao": faker.lorem.sentence(),
+                    "quantidade": faker.datatype.number({'min': 4, 'max': 800})
+                }
+            case 'sem preencher a descrição':
+                return{
+                    "nome": `${faker.commerce.product()} ${faker.address.cityName()} ${faker.address.cityName()}`,
+                    "preco": faker.datatype.number({'min': 10, 'max': 9999}),
+                    "descricao": "",
+                    "quantidade": faker.datatype.number({'min': 4, 'max': 800})
+                }
+            case 'com quantidade menor que 0':
+                return{
+                    "nome": `${faker.commerce.product()} ${faker.address.cityName()} ${faker.address.cityName()}`,
+                    "preco": faker.datatype.number({'min': 10, 'max': 9999}),
+                    "descricao": faker.lorem.sentence(),
+                    "quantidade": faker.datatype.number({'max': -1})
+                }
+        }
+
+    }    
 
 }
 

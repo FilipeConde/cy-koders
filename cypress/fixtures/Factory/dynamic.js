@@ -127,8 +127,50 @@ export default class DynamicFactory {
                     "quantidade": faker.datatype.number({'max': -1})
                 }
         }
+    }
+    
+    static putProdutos(typeProd){
 
-    }    
+        switch(typeProd){
+
+            case 'valido':
+            case 'invalido':
+                return {
+                    "nome": `${faker.commerce.product()} ${faker.address.cityName()} ${faker.address.cityName()}`,
+                    "preco": faker.datatype.number({'min': 10, 'max': 9999}),
+                    "descricao": faker.lorem.sentence(),
+                    "quantidade": faker.datatype.number({'min': 4, 'max': 800})
+                }
+            case 'sem preencher o nome':
+                return{
+                    "nome": "",
+                    "preco": faker.datatype.number({'min': 10, 'max': 9999}),
+                    "descricao": faker.lorem.sentence(),
+                    "quantidade": faker.datatype.number({'min': 4, 'max': 800})
+                }    
+            case 'com preço menor que 1':
+                return{
+                    "nome": `${faker.commerce.product()} ${faker.address.cityName()} ${faker.address.cityName()}`,
+                    "preco": faker.datatype.number({'max': 0}),
+                    "descricao": faker.lorem.sentence(),
+                    "quantidade": faker.datatype.number({'min': 4, 'max': 800})
+                }
+            case 'sem preencher a descrição':
+                return{
+                    "nome": `${faker.commerce.product()} ${faker.address.cityName()} ${faker.address.cityName()}`,
+                    "preco": faker.datatype.number({'min': 10, 'max': 9999}),
+                    "descricao": "",
+                    "quantidade": faker.datatype.number({'min': 4, 'max': 800})
+                }
+            case 'com quantidade menor que 0':
+                return{
+                    "nome": `${faker.commerce.product()} ${faker.address.cityName()} ${faker.address.cityName()}`,
+                    "preco": faker.datatype.number({'min': 10, 'max': 9999}),
+                    "descricao": faker.lorem.sentence(),
+                    "quantidade": faker.datatype.number({'max': -1})
+                }
+        }
+    }
 
 }
 

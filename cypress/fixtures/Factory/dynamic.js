@@ -19,7 +19,7 @@ export default class DynamicFactory {
             case 'com permissão':    
                 return {
                     "nome": `${faker.name.firstName()} ${faker.name.lastName()} ${faker.name.lastName()}`,
-                    "email": faker.internet.email(),
+                    "email": `${faker.random.alphaNumeric(7)}_${faker.random.alphaNumeric(7)}@outlook.com`,
                     "password": faker.internet.password(),
                     "administrador": admin.toString(),
                 }
@@ -134,7 +134,7 @@ export default class DynamicFactory {
         switch(typeProd){
 
             case 'valido':
-            case 'invalido':
+            case 'invalido':            
                 return {
                     "nome": `${faker.commerce.product()} ${faker.address.cityName()} ${faker.address.cityName()}`,
                     "preco": faker.datatype.number({'min': 10, 'max': 9999}),
@@ -229,7 +229,10 @@ export default class DynamicFactory {
         }
     }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> main
 }
 
 

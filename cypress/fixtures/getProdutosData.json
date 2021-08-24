@@ -2,17 +2,23 @@
     {
       "tipo": "ID válido",
       "status": 200,
-      "propriedade": "message",
+      "propriedade": "nome",
       "expect": " com o ",
-      "message": "id do produto cadastrado e detalhes do item"
+      "message": "nome do produto cadastrado"
     },
-
     {
-        "tipo": "ID inválido",
-        "status": 400,
-        "propriedade": "message",
-        "expect": " com a mensagem ",
-        "message": "Produto não encontrado"
-      }
+      "tipo": "ID inválido",
+      "status": 400,
+      "propriedade": "message",
+      "expect": " com a mensagem: ",
+      "message": "Produto não encontrado"
+    },
+    {
+      "tipo": "nenhum ID",
+      "status": 200,
+      "propriedade": "quantidade",
+      "expect": " exibindo o total de produtos cadastrados maior que ",
+      "message": 1
+    }
 ]
    

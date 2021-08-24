@@ -15,6 +15,7 @@ Cypress.Commands.add('postProdutos', (typeProd, auth) => {
         case 'com preço menor que 1':
         case 'sem preencher a descrição':
         case 'com quantidade menor que 0':
+        case 'duplicado':
             body = DynamicFactory.criarProdutos(typeProd)
             return Rest.httpRequestWithBody('POST', URL_PRODUTOS, body, { authorization: auth })
         
@@ -25,31 +26,29 @@ Cypress.Commands.add('postProdutos', (typeProd, auth) => {
         default:
             return { notfound: cy.log('cy.postProdutos - typeProd não encontrado'), notfound: 'cy.postProdutos - typeProd não encontrado' }
         
-    } 
-    
-       
+    }        
 })
 
 Cypress.Commands.add('getProdutos', (typeProd) => {
-    
+      
    
-       let body
-       switch(typeProd){    
-            
-   
-           case 'ID válido': 
-                return ProdServ.giveMeValidProductID().then( post_response => {
-                let tempurl = `${URL_PRODUTOS}/${post_response}`
-                Rest.httpRequestWithBody('GET', tempurl, body)
+    let prodID
+
+    switch(typeProd){
+        case 'ID válido':
+            ProdServ.cadastrarProduto()
+            cy.get('@post_prod_response').then(post_prod_response => {
+                prodID = post_prod_response.body._id
+                return Rest.httpRequestWithoutBody('GET', `${URL_PRODUTOS}/${prodID}`)
             })
-   
-           case 'ID inválido':
-               let idProd = DynamicFactory.geradorID()
-               let tempurl = `${URL_PRODUTOS}/${idProd}`
-               return Rest.httpRequestWithoutBody('GET', tempurl)
-         
-       }
-   })
+            break;
+        case 'ID inválido':
+            prodID = DynamicFactory.geradorID()
+            return Rest.httpRequestWithoutBody('GET', `${URL_PRODUTOS}/${prodID}`)            
+        case 'nenhum ID':
+            return Rest.httpRequestWithoutBody('GET', URL_PRODUTOS)
+    }
+})
 
 
 Cypress.Commands.add('putProdutos', (typeProd, auth) => {
@@ -87,12 +86,19 @@ Cypress.Commands.add('putProdutos', (typeProd, auth) => {
     } 
 })
 
-Cypress.Commands.add('validacaoGetProdutos', (typeProd, res, itensProdutos) => {
+Cypress.Commands.add('validacaoGetProdutos', (typeProd, get_prod_response, itensProdutos) => {
 
     switch(typeProd){        
         case 'ID válido':
-            return expect(res.body[itensProdutos.propriedade]).exist
+            cy.get('@post_prod_response').then(post_prod_response => {
+                expect(get_prod_response.body._id).to.equal(post_prod_response.body._id)
+                return expect(get_prod_response.body[itensProdutos.propriedade]).exist
+            })
+            break;            
         case 'ID inválido':
-            return expect(res.body[itensProdutos.propriedade]).to.equal(itensProdutos.message)
+            return expect(get_prod_response.body[itensProdutos.propriedade]).to.equal(itensProdutos.message)
+        case 'nenhum ID':
+            return expect(get_prod_response.body[itensProdutos.propriedade]).to.greaterThan(itensProdutos.message)
+            
     }   
 })

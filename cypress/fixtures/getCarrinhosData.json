@@ -4,7 +4,7 @@
       "status": 200,
       "propriedade": "message",
       "expect": " com o ",
-      "message": "id do produto cadastrado e detalhes do item"
+      "message": "id do carrinho cadastrado"
     },
 
     {
@@ -13,6 +13,14 @@
         "propriedade": "message",
         "expect": " com a mensagem ",
         "message": "Carrinho não encontrado"
+      },
+
+      {
+        "tipo": "nenhum ID",
+        "status": 200,
+        "propriedade": "quantidade",
+        "expect": " exibindo o total de produtos cadastrados maior que ",
+        "message": 1
       }
 ]
    

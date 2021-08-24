@@ -12,10 +12,12 @@ Cypress.Commands.add('getCarrinhos', (typeCar) => {
          
 
         case 'ID válido': 
-             return CarServ.giveMeValidCarID().then( post_response => {
-             let tempurl = `${URL_CARRINHOS}/${post_response}`
-             Rest.httpRequestWithBody('GET', tempurl, body)
-         })
+             CarServ.giveMeValidCarID()
+             cy.get('@post_carrinhos_response').then(post_carrinhos_response => {
+                return Rest.httpRequestWithoutBody('GET', `${URL_CARRINHOS}/${post_carrinhos_response.body._id}`)
+             })
+             break;
+         
 
         case 'ID inválido':
             let idCar = DynamicFactory.geradorID()
@@ -29,19 +31,18 @@ Cypress.Commands.add('getCarrinhos', (typeCar) => {
 })
 
 
-Cypress.Commands.add('validacaoGetCarrinhos', (typeCar, get_car_response, itensCarrinhos) => {
+Cypress.Commands.add('validacaoGetCarrinhos', (typeCar, get_carrinhos_response, itensCarrinhos) => {
 
     switch(typeCar){        
         case 'ID válido':
-            cy.get('@get_car_response').then(get_car_response => {
-                expect(get_car_response.body._id).to.equal(get_car_response.body._id)
-                return expect(get_car_response.body[itensCarrinhos.propriedade]).exist
+            cy.get('@get_carrinhos_response').then(get_carrinhos_response => {
+                return expect(get_carrinhos_response.body[itensCarrinhos.propriedade]).exist
             })
             break;            
         case 'ID inválido':
-            return expect(get_car_response.body[itensCarrinhos.propriedade]).to.equal(itensCarrinhos.message)
+            return expect(get_carrinhos_response.body[itensCarrinhos.propriedade]).to.equal(itensCarrinhos.message)
         case 'nenhum ID':
-            return expect(get_car_response.body[itensCarrinhos.propriedade]).to.greaterThan(itensCarrinhos.message)
+            return expect(get_carrinhos_response.body[itensCarrinhos.propriedade]).to.greaterThan(itensCarrinhos.message)
             
     }   
 

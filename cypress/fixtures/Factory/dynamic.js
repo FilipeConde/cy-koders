@@ -229,10 +229,7 @@ export default class DynamicFactory {
         }
     }
 
-<<<<<<< HEAD
 
-=======
->>>>>>> main
 }
 
 

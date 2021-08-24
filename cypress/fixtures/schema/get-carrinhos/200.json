@@ -5,65 +5,45 @@
        
     ],
     "properties": {
-        "quantidade": {
-            "type": "integer"
-        },
-        "carrinhos": {
-            "type": "array",
+        "produtos": {
+            
             "additionalItems": true,
             "items": {
-                "type": "object",
-                "required": [
-                    "produtos",
-                    "precoTotal",
-                    "quantidadeTotal",
-                    "idUsuario",
-                    "_id"
-                ],
-                "properties": {
-                    "produtos": {
-                        "type": "array",
-                        "additionalItems": true,
-                        "items": {
-                            "type": "array",
-                            "additionalItems": true,
-                            "items": {
-                                "type": "object",
-                                "required": [
-                                    "idProduto",
-                                    "quantidade",
-                                    "precoUnitario"
-                                ],
-                                "properties": {
-                                    "idProduto": {
-                                        "type": "string"
-                                    },
-                                    "quantidade": {
-                                        "type": "integer"
-                                    },
-                                    "precoUnitario": {
-                                        "type": "integer"
-                                    }
-                                },
-                                "additionalProperties": true
-                            }
+                
+                "additionalItems": true,
+                "items": {
+                    
+                    "required": [
+                        "idProduto",
+                        "quantidade",
+                        "precoUnitario"
+                    ],
+                    "properties": {
+                        "idProduto": {
+                            "type": "string"
+                        },
+                        "quantidade": {
+                            "type": "integer"
+                        },
+                        "precoUnitario": {
+                            "type": "integer"
                         }
                     },
-                    "precoTotal": {
-                        "type": "integer"
-                    },
-                    "quantidadeTotal": {
-                        "type": "integer"
-                    },
-                    "idUsuario": {
-                        "type": "string"
-                    },
-                    "_id": {
-                        "type": "string"
-                    }
-                },
-                "additionalProperties": true
+                    "additionalProperties": true
+                }
             }
+        },
+        "precoTotal": {
+            "type": "integer"
+        },
+        "quantidadeTotal": {
+            "type": "integer"
+        },
+        "idUsuario": {
+            "type": "string"
+        },
+        "_id": {
+            "type": "string"
         }
     },
     "additionalProperties": true

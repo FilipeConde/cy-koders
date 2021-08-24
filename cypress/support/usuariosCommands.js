@@ -111,6 +111,8 @@ Cypress.Commands.add('putUsuarios', (typeUser) => {
             let tempurl = `${URL_USUARIOS}/${idUser}`
             body = DynamicFactory.criarUsuario('valido')
             return Rest.httpRequestWithBody('PUT', tempurl, body)
+        default:
+            return { notfound: cy.log('cy.putUsuarios - typeUser não encontrado'), notfound: 'cy.putUsuarios - typeUser não encontrado' }
         
     } 
 })

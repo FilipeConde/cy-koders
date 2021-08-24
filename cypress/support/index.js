@@ -20,6 +20,7 @@ import './commands'
 import './usuariosCommands'
 import './loginCommands'
 import './produtosCommands'
+import './carrinhosCommands'
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')

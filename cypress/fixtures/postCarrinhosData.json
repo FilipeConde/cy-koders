@@ -1,0 +1,66 @@
+[
+    {
+        "auth"    : "valido",
+        "tipo"   : "sem carrinho",
+        "typeProd": "valido",
+        "status"  : 201,
+        "propriedade": "message",
+        "message": "Cadastro realizado com sucesso"
+    },
+    {
+        "auth"    : "valido",
+        "tipo"   : "sem carrinho",
+        "typeProd": "duplicado",
+        "status"  : 400,
+        "propriedade": "message",
+        "message": "Não é permitido possuir produto duplicado"
+    },
+    {
+        "auth"    : "valido",
+        "tipo"   : "sem carrinho",
+        "typeProd": "inexistente",
+        "status"  : 400,
+        "propriedade": "message",
+        "message": "Produto não encontrado"
+    },
+    {
+        "auth"    : "valido",
+        "tipo"   : "sem carrinho",
+        "typeProd": "sem quantidade disponível",
+        "status"  : 400,
+        "propriedade": "message",
+        "message": "Produto não possui quantidade suficiente"
+    },
+    {
+        "auth"    : "valido",
+        "tipo"   : "com carrinho",
+        "typeProd": "valido",
+        "status"  : 400,
+        "propriedade": "message",
+        "message": "Não é permitido ter mais de 1 carrinho"
+    },
+    {
+        "auth"    : "valido",
+        "tipo"   : "sem carrinho",
+        "typeProd": "sem preencher ID",
+        "status"  : 400,
+        "propriedade": "produtos[0].idProduto",
+        "message": "produtos[0].idProduto não pode ficar em branco"
+    },
+    {
+        "auth"    : "valido",
+        "tipo"   : "sem carrinho",
+        "typeProd": "com quantidade menor que 1",
+        "status"  : 400,
+        "propriedade": "produtos[0].quantidade",
+        "message": "produtos[0].quantidade deve ser um número positivo"
+    },
+    {
+        "auth": "inválido",
+        "tipo"   : "sem carrinho",
+        "typeProd": "sem quantidade disponível",
+        "status": 401,
+        "propriedade": "message",
+        "message": "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais"
+    }
+]

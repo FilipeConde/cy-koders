@@ -1,7 +1,7 @@
 import DynamicFactory from '../fixtures/factory/dynamic'
 import Rest from '../services/common/_rest.service'
 
-export default class ProdServ {
+export default class CarServ {
 
     static giveMeValidProductID(){
 

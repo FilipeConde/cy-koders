@@ -1,0 +1,18 @@
+[
+    {
+      "tipo": "ID válido",
+      "status": 200,
+      "propriedade": "message",
+      "expect": " com o ",
+      "message": "id do produto cadastrado e detalhes do item"
+    },
+
+    {
+        "tipo": "ID inválido",
+        "status": 400,
+        "propriedade": "message",
+        "expect": " com a mensagem ",
+        "message": "Carrinho não encontrado"
+      }
+]
+   

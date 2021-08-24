@@ -39,5 +39,29 @@
     "status": 400,
     "propriedade": "administrador",
     "message": "administrador deve ser 'true' ou 'false'"
+  },
+  {
+    "tipo": "sem enviar a propriedade 'nome'",
+    "status": 400,
+    "propriedade": "nome",
+    "message": "nome é obrigatório"
+  },
+  {
+    "tipo": "sem enviar a propriedade 'email'",
+    "status": 400,
+    "propriedade": "email",
+    "message": "email é obrigatório"
+  },
+  {
+    "tipo"    : "sem enviar a propriedade 'password'",
+    "status"  : 400,
+    "propriedade": "password",
+    "message": "password é obrigatório"
+  },
+  {
+    "tipo"    : "sem enviar a propriedade 'administrador'",
+    "status"  : 400,
+    "propriedade": "administrador",
+    "message": "administrador é obrigatório"
   }
 ]

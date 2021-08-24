@@ -82,7 +82,15 @@ Cypress.Commands.add('putUsuarios', (typeUser) => {
 
     switch(typeUser){
         
-        case 'valido':            
+        case 'valido':
+        case 'sem preencher o nome':
+        case 'sem preencher o email':
+        case 'sem preencher a senha':
+        case 'sem preencher a permissão de adm':
+        case "sem enviar a propriedade 'nome'":
+        case "sem enviar a propriedade 'email'":
+        case "sem enviar a propriedade 'password'": 
+        case "sem enviar a propriedade 'administrador'":              
             UserServ.giveMeValidUserID('valido').then( post_response => {
                 let tempurl = `${URL_USUARIOS}/${post_response.body._id}`
                 body = DynamicFactory.criarUsuario(typeUser)
@@ -104,15 +112,5 @@ Cypress.Commands.add('putUsuarios', (typeUser) => {
             body = DynamicFactory.criarUsuario('valido')
             return Rest.httpRequestWithBody('PUT', tempurl, body)
         
-        case 'sem preencher o nome':
-        case 'sem preencher o email':
-        case 'sem preencher a senha':
-        case 'sem preencher a permissão de adm':
-            UserServ.giveMeValidUserID('valido').then( post_response => {
-                let tempurl = `${URL_USUARIOS}/${post_response.body._id}`
-                body = DynamicFactory.criarUsuario(typeUser)
-                return Rest.httpRequestWithBody('PUT', tempurl, body)
-            })
-            break;
     } 
 })

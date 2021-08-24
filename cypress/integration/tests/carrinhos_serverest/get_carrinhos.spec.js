@@ -5,7 +5,7 @@ describe('Get /carrinhos', () => {
     const dataCarrinhos = require('../../../fixtures/getCarrinhosData.json')
 
     dataCarrinhos.forEach(itensCarrinhos => {
-    context(`Quando buscar um produto usando "${itensCarrinhos.tipo}"`, () => {
+    context(`Quando buscar um carrinho usando "${itensCarrinhos.tipo}"`, () => {
         beforeEach(() => {
             cy.getCarrinhos(itensCarrinhos.tipo).then( get_car_response => {
                 cy.wrap(get_car_response).as('get_car_response')

@@ -4,10 +4,9 @@ import Rest from '../services/common/_rest.service'
 export default class CarServ {
 
     static giveMeValidCarID(){
+        
 
-        return cy.getCarrinhos('valido').then( post_response => {                
-            cy.wrap(post_response).as('post_response')
-        })
+        
     }    
     
 

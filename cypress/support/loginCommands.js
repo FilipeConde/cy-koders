@@ -25,8 +25,13 @@ Cypress.Commands.add('postLogin', (typeLogin) => {
         case 'invalido':
         case 'sem preencher a senha':
         case 'sem preencher o email':
+        case "sem enviar a propriedade 'email'":
+        case "sem enviar a propriedade 'password'":
             let body = DynamicFactory.realizarLogin(typeLogin)
             return Rest.httpRequestWithBody('POST', '/login', body)
+        default:
+        return { notfound: cy.log('cy.postLogin - typeLogin não encontrado'), notfound: 'cy.postLogin - typeLogin não encontrado' }
+        
     }
 
 })

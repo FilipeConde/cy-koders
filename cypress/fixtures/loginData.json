@@ -26,5 +26,17 @@
         "status"  : 400,
         "propriedade": "email",
         "message": "email não pode ficar em branco"
+    },
+    {
+        "tipo"    : "sem enviar a propriedade 'email'",
+        "status"  : 400,
+        "propriedade": "email",
+        "message": "email é obrigatório"
+    },
+    {
+        "tipo"    : "sem enviar a propriedade 'password'",
+        "status"  : 400,
+        "propriedade": "password",
+        "message": "password é obrigatório"
     }
 ]

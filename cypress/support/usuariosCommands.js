@@ -12,23 +12,24 @@ Cypress.Commands.add('postUsuarios', (typeUser) => {
         case 'valido':
         case 'ID válido':
         case 'com permissão':  
-        case 'sem permissão':      
+        case 'sem permissão':
+        case 'sem preencher o nome':
+        case 'sem preencher o email':
+        case 'sem preencher a senha':
+        case 'sem preencher a permissão de adm':
+        case "sem enviar a propriedade 'nome'":
+        case "sem enviar a propriedade 'email'":
+        case "sem enviar a propriedade 'password'": 
+        case "sem enviar a propriedade 'administrador'":       
             body = DynamicFactory.criarUsuario(typeUser)
             return Rest.httpRequestWithBody('POST', URL_USUARIOS, body)
         
         case 'invalido':
             body = UserServ.bodyInvalidEmail(typeUser)
             return Rest.httpRequestWithBody('POST', URL_USUARIOS, body)
-        
-        case 'sem preencher o nome':
-        case 'sem preencher o email':
-        case 'sem preencher a senha':
-        case 'sem preencher a permissão de adm':
-            body = DynamicFactory.criarUsuario(typeUser)
-            return Rest.httpRequestWithBody('POST', URL_USUARIOS, body)
 
         default:
-            return { notfound: cy.log('cy.postUsuarios - typeUser não encontrado') }
+            return { notfound: cy.log('cy.postUsuarios - typeUser não encontrado'), notfound: 'cy.postUsuarios - typeUser não encontrado' }
     } 
 })
 
@@ -63,7 +64,11 @@ Cypress.Commands.add('validacaoGetUsuarios', (typeUser, res, itensUsuarios) => {
 
     switch(typeUser){        
         case 'ID válido':
-            return expect(res.body[itensUsuarios.propriedade]).exist
+            cy.get('@post_response').then( post_response => {
+                expect(res.body._id).to.equal(post_response.body._id)
+                return expect(res.body[itensUsuarios.propriedade]).exist
+            })
+            break;            
         case 'ID inválido':
             return expect(res.body[itensUsuarios.propriedade]).to.equal(itensUsuarios.message)
         case 'nenhum ID':

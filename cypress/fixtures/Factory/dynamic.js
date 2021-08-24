@@ -58,6 +58,31 @@ export default class DynamicFactory {
                     "password": faker.internet.password(),
                     "administrador": "false",
                 }
+            case "sem enviar a propriedade 'nome'":    
+                return {
+                    "email": `${faker.random.alphaNumeric(7)}_${faker.random.alphaNumeric(7)}@outlook.com`,
+                    "password": faker.internet.password(),
+                    "administrador": admin.toString(),
+                }
+            case "sem enviar a propriedade 'email'":    
+                return {
+                    "nome": `${faker.name.firstName()} ${faker.name.lastName()} ${faker.name.lastName()}`,
+                    "password": faker.internet.password(),
+                    "administrador": admin.toString(),
+                }
+            case "sem enviar a propriedade 'password'":    
+                return {
+                    "nome": `${faker.name.firstName()} ${faker.name.lastName()} ${faker.name.lastName()}`,
+                    "email": `${faker.random.alphaNumeric(7)}_${faker.random.alphaNumeric(7)}@outlook.com`,
+                    "administrador": admin.toString(),
+                }
+            case "sem enviar a propriedade 'administrador'":    
+                return {
+                    "nome": `${faker.name.firstName()} ${faker.name.lastName()} ${faker.name.lastName()}`,
+                    "email": `${faker.random.alphaNumeric(7)}_${faker.random.alphaNumeric(7)}@outlook.com`,
+                    "password": faker.internet.password(),
+                }
+
             default:
                 return { notfound: cy.log('DynamicFactory.criarUsuario - typeUser não encontrado') }
         }
@@ -82,6 +107,14 @@ export default class DynamicFactory {
                 return {
                     "email"   : "",
                     "password": faker.internet.password(),
+                }
+            case "sem enviar a propriedade 'email'":
+                return {
+                    "password": faker.internet.password(),
+                }
+            case "sem enviar a propriedade 'password'":
+                return {
+                    "email"   : faker.internet.email()
                 }
         }         
     }

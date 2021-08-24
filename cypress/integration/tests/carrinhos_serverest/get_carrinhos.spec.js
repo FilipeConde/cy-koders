@@ -1,30 +1,30 @@
 /// <reference types ="cypress"/>
 
-describe('Get /produtos', () => {
+describe('Get /carrinhos', () => {
 
-    const dataProdutos = require('../../../fixtures/getProdutosData.json')
+    const dataCarrinhos = require('../../../fixtures/getCarrinhosData.json')
 
-    dataProdutos.forEach(itensProdutos => {
-    context(`Quando buscar um produto usando "${itensProdutos.tipo}"`, () => {
+    dataCarrinhos.forEach(itensCarrinhos => {
+    context(`Quando buscar um produto usando "${itensCarrinhos.tipo}"`, () => {
         beforeEach(() => {
-            cy.getProdutos(itensProdutos.tipo).then( post_response => {
-                cy.wrap(post_response).as('Response')
+            cy.getCarrinhos(itensCarrinhos.tipo).then( post_response => {
+                cy.wrap(post_response).as('post_car_response')
             })
         })
-        it(`Então deverá ser retornado o schema "get-produtos" com o status ${itensProdutos.status}`, () => {
-            let status = itensProdutos.status
-            cy.get('@Response').then( res => {
-                cy.contractValidation( res, 'get-produtos', status ).then( valid => {
+        it(`Então deverá ser retornado o schema "get-carrinhos" com o status ${itensCarrinhos.status}`, () => {
+            let status = itensCarrinhos.status
+            cy.get('@post_car_response').then(post_car_response => {
+                cy.contractValidation( post_car_response, 'get-carrinhos', status ).then( valid => {
                     expect(valid).to.be.true
-                    expect(status).to.equal(status)
+                    expect(post_car_response.status).to.equal(status)
                     
                 })
                 
             })
         })
-        it(`E deverá ser retornada a propriedade '${itensProdutos.propriedade}'${itensProdutos.expect}"${itensProdutos.message}"`, () => {
-            cy.get('@Response').then( res => {
-                cy.validacaoGetProdutos(itensProdutos.tipo, res, itensProdutos)
+        it(`E deverá ser retornada a propriedade '${itensCarrinhos.propriedade}'${itensCarrinhos.expect}"${itensCarrinhos.message}"`, () => {
+            cy.get('@post_car_response').then( res => {
+                cy.validacaoGetCarrinhos(itensCarrinhos.tipo, res, itensCarrinhos)
             })
         })
     })

@@ -172,6 +172,64 @@ export default class DynamicFactory {
         }
     }
 
+    static postCarrinhos(typeProd, prodID){
+        switch(typeProd){
+
+            case 'valido':
+            case 'inexistente':
+                return {
+                    "produtos": [
+                      {
+                        "idProduto": prodID,
+                        "quantidade": faker.datatype.number({'min': 1, 'max': 4})
+                      }
+                    ]
+                  }
+            case 'duplicado':
+            return {
+                "produtos": [
+                    {
+                        "idProduto": prodID,
+                        "quantidade": faker.datatype.number({'min': 1, 'max': 2})
+                    },
+                    {
+                        "idProduto": prodID,
+                        "quantidade": faker.datatype.number({'min': 1, 'max': 2})
+                    }
+                ]
+            }
+            case 'sem quantidade disponível':
+                return {
+                    "produtos": [
+                      {
+                        "idProduto": prodID,
+                        "quantidade": faker.datatype.number({'min': 801})
+                      }
+                    ]
+                  }
+            case 'sem preencher ID':
+                return{
+                    "produtos": [
+                      {
+                        "idProduto": "",
+                        "quantidade": faker.datatype.number({'min': 801})
+                      }
+                    ]
+                  }
+
+            case 'com quantidade menor que 1':
+                return{
+                    "produtos": [
+                      {
+                        "idProduto": prodID,
+                        "quantidade": faker.datatype.number({'max': 0})
+                      }
+                    ]
+                  }           
+        }
+    }
+
+
 }
 
 

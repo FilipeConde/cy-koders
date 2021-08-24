@@ -3,21 +3,21 @@ import Rest from '../services/common/_rest.service'
 
 export default class CarServ {
 
-    static giveMeValidProductID(){
+    static giveMeValidCarID(){
 
-        return cy.getProdutos('valido').then( post_response => {                
+        return cy.getCarrinhos('valido').then( post_response => {                
             cy.wrap(post_response).as('post_response')
         })
     }    
     
 
-    static bodyInvalidProdName(typeProd, auth){
+    static bodyInvalidCarName(typeCar, auth){
 
-        let body = DynamicFactory.criarProdutos(typeProd)
-        Rest.httpRequestWithBody('POST', '/produtos', body, { authorization: auth })
-        let prodNome = body.nome
-        body = DynamicFactory.criarProdutos(typeProd)
-        body.nome = prodNome
+        let body = DynamicFactory.postCarrinhos(typeCar)
+        Rest.httpRequestWithBody('POST', '/carrinhos', body, { authorization: auth })
+        let carIdProduto = body.idProduto
+        body = DynamicFactory.postCarrinhos(typecar)
+        body.idProduto = carIdProduto
         
         return body
     }

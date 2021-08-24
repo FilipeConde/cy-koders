@@ -26,23 +26,11 @@ Cypress.Commands.add('postProdutos', (typeProd, auth) => {
         default:
             return { notfound: cy.log('cy.postProdutos - typeProd não encontrado'), notfound: 'cy.postProdutos - typeProd não encontrado' }
         
-    } 
-    
-       
+    }        
 })
 
 Cypress.Commands.add('getProdutos', (typeProd) => {
-    
    
-   
-       switch(typeProd){    
-          
-   
-           case 'ID válido': 
-              return ProdServ.giveMeValidProductID().then( post_response => {
-              let tempurl = `${URL_PRODUTOS}/${post_response}`
-               Rest.httpRequestWithoutBody('GET', tempurl)
-  
    let body
        switch(typeProd){    
             
@@ -59,7 +47,7 @@ Cypress.Commands.add('getProdutos', (typeProd) => {
                return Rest.httpRequestWithoutBody('GET', tempurl)
            
        }
-   })
+})
 
 
 Cypress.Commands.add('putProdutos', (typeProd, auth) => {

@@ -15,6 +15,7 @@ Cypress.Commands.add('postProdutos', (typeProd, auth) => {
         case 'com preço menor que 1':
         case 'sem preencher a descrição':
         case 'com quantidade menor que 0':
+        case 'duplicado':
             body = DynamicFactory.criarProdutos(typeProd)
             return Rest.httpRequestWithBody('POST', URL_PRODUTOS, body, { authorization: auth })
         

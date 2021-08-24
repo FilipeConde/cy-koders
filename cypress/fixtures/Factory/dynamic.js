@@ -19,7 +19,7 @@ export default class DynamicFactory {
             case 'com permissão':    
                 return {
                     "nome": `${faker.name.firstName()} ${faker.name.lastName()} ${faker.name.lastName()}`,
-                    "email": faker.internet.email(),
+                    "email": `${faker.random.alphaNumeric(7)}_${faker.random.alphaNumeric(7)}@outlook.com`,
                     "password": faker.internet.password(),
                     "administrador": admin.toString(),
                 }
@@ -134,7 +134,7 @@ export default class DynamicFactory {
         switch(typeProd){
 
             case 'valido':
-            case 'invalido':
+            case 'invalido':            
                 return {
                     "nome": `${faker.commerce.product()} ${faker.address.cityName()} ${faker.address.cityName()}`,
                     "preco": faker.datatype.number({'min': 10, 'max': 9999}),
@@ -169,6 +169,63 @@ export default class DynamicFactory {
                     "descricao": faker.lorem.sentence(),
                     "quantidade": faker.datatype.number({'max': -1})
                 }
+        }
+    }
+
+    static postCarrinhos(typeProd, prodID){
+        switch(typeProd){
+
+            case 'valido':
+            case 'inexistente':
+                return {
+                    "produtos": [
+                      {
+                        "idProduto": prodID,
+                        "quantidade": faker.datatype.number({'min': 1, 'max': 4})
+                      }
+                    ]
+                  }
+            case 'duplicado':
+            return {
+                "produtos": [
+                    {
+                        "idProduto": prodID,
+                        "quantidade": faker.datatype.number({'min': 1, 'max': 2})
+                    },
+                    {
+                        "idProduto": prodID,
+                        "quantidade": faker.datatype.number({'min': 1, 'max': 2})
+                    }
+                ]
+            }
+            case 'sem quantidade disponível':
+                return {
+                    "produtos": [
+                      {
+                        "idProduto": prodID,
+                        "quantidade": faker.datatype.number({'min': 801})
+                      }
+                    ]
+                  }
+            case 'sem preencher ID':
+                return{
+                    "produtos": [
+                      {
+                        "idProduto": "",
+                        "quantidade": faker.datatype.number({'min': 801})
+                      }
+                    ]
+                  }
+
+            case 'com quantidade menor que 1':
+                return{
+                    "produtos": [
+                      {
+                        "idProduto": prodID,
+                        "quantidade": faker.datatype.number({'max': 0})
+                      }
+                    ]
+                  }           
         }
     }
 

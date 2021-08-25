@@ -102,3 +102,28 @@ Cypress.Commands.add('validacaoGetProdutos', (typeProd, get_prod_response, itens
             
     }   
 })
+
+Cypress.Commands.add('deleteProdutos', (typeProd, auth) => {
+    
+    
+
+    switch(typeProd){
+        case 'ID válido':
+            cy.postProdutos('valido').then(post_produtos_response  => {
+                return Rest.httpRequestWithoutBody('POST', `${URL_PRODUTOS}/${post_produtos_response}`, { authorization: auth }) 
+             
+            })
+            
+            break;
+
+        case 'ID inválido':
+            let usuarioInvalido = DynamicFactory.geradorID()
+            return Rest.httpRequestWithoutBody('DELETE', `${URL_USUARIOS}/${usuarioInvalido}`) 
+
+        case 'Usuário com carrinho':
+           cy.getCarrinhos('ID válido').then(get_carrinhos_response => {
+               cy.log(get_carrinhos_response.body.idUsuario)
+               return Rest.httpRequestWithoutBody('DELETE', `${URL_USUARIOS}/${get_carrinhos_response.body.idUsuario}`) 
+           })
+    }
+})

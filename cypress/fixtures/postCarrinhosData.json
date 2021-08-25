@@ -62,5 +62,21 @@
         "status": 401,
         "propriedade": "message",
         "message": "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais"
+    },
+    {
+        "auth"    : "valido",
+        "tipo"   : "sem carrinho",
+        "typeProd": "sem enviar a propriedade idProduto",
+        "status"  : 400,
+        "propriedade": "produtos[0].idProduto",
+        "message": "produtos[0].idProduto é obrigatório"
+    },
+    {
+        "auth"    : "valido",
+        "tipo"   : "sem carrinho",
+        "typeProd": "sem enviar a propriedade quantidade",
+        "status"  : 400,
+        "propriedade": "produtos[0].quantidade",
+        "message": "produtos[0].quantidade é obrigatório"
     }
 ]

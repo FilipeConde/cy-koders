@@ -15,6 +15,10 @@ Cypress.Commands.add('postProdutos', (typeProd, auth) => {
         case 'com preço menor que 1':
         case 'sem preencher a descrição':
         case 'com quantidade menor que 0':
+        case "sem enviar a propriedade 'nome'":
+        case "sem enviar a propriedade 'preço'":
+        case "sem enviar a propriedade 'descrição'":
+        case "sem enviar a propriedade 'quantidade'":
         case 'duplicado':
             body = DynamicFactory.criarProdutos(typeProd)
             return Rest.httpRequestWithBody('POST', URL_PRODUTOS, body, { authorization: auth })
@@ -63,7 +67,11 @@ Cypress.Commands.add('putProdutos', (typeProd, auth) => {
         case 'com preço menor que 1':
         case 'sem preencher a descrição':
         case 'com quantidade menor que 0':
-            cy.postProdutos(typeProd, auth).then( post_prod_response => {
+        case "sem enviar a propriedade 'nome'":
+        case "sem enviar a propriedade 'preço'":
+        case "sem enviar a propriedade 'descrição'":
+        case "sem enviar a propriedade 'quantidade'":
+            cy.postProdutos('valido', auth).then( post_prod_response => {
                 prodID = post_prod_response.body._id
                 body = DynamicFactory.putProdutos(typeProd)
                 return Rest.httpRequestWithBody('PUT', `${URL_PRODUTOS}/${prodID}`, body, { authorization: auth })

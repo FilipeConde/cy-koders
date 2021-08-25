@@ -13,7 +13,7 @@ describe('Post /carrinhos', () => {
                     cy.wrap(post_response).as('post_login_response')
                 })
             })
-            context(`Quando cadastrar um carrinho para usuario "${itensCarrinhos.tipo}" com produto "${itensCarrinhos.typeProd}"`, () => {
+            context(`Quando cadastrar um carrinho para usuario "${itensCarrinhos.tipo}" usando um produto "${itensCarrinhos.typeProd}"`, () => {
                 beforeEach(() => {
                     cy.get('@post_login_response').then( post_login_response => {
                         let typeCart = itensCarrinhos.tipo

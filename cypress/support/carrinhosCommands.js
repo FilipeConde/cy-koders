@@ -56,6 +56,9 @@ Cypress.Commands.add('postCarrinhos', (typeCart, typeProd, auth) => {
         case 'duplicado':
         case 'sem quantidade disponível':
         case 'com quantidade menor que 1':
+        case "'produtos[0].quantidade'":
+        case "sem enviar a propriedade quantidade":
+        case "sem enviar a propriedade idProduto":
             cy.postProdutos('valido', auth).then( post_prod_response => {
                 prodID = post_prod_response.body._id
                 body = DynamicFactory.postCarrinhos(typeProd, prodID)

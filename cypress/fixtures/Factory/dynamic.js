@@ -159,6 +159,30 @@ export default class DynamicFactory {
                     "descricao": faker.lorem.sentence(),
                     "quantidade": faker.datatype.number({'max': -1})
                 }
+            case "sem enviar a propriedade 'nome'":
+                return{
+                    "preco": faker.datatype.number({'min': 10, 'max': 9999}),
+                    "descricao": faker.lorem.sentence(),
+                    "quantidade": faker.datatype.number({'min': 4, 'max': 800})
+                }
+            case "sem enviar a propriedade 'preço'":
+                return{
+                    "nome": `${faker.commerce.product()} ${faker.address.cityName()} ${faker.address.cityName()}`,
+                    "descricao": faker.lorem.sentence(),
+                    "quantidade": faker.datatype.number({'min': 4, 'max': 800})
+                }
+            case "sem enviar a propriedade 'descrição'":
+                return{
+                    "nome": `${faker.commerce.product()} ${faker.address.cityName()} ${faker.address.cityName()}`,
+                    "preco": faker.datatype.number({'min': 10, 'max': 9999}),
+                    "quantidade": faker.datatype.number({'min': 4, 'max': 800})
+                }
+            case "sem enviar a propriedade 'quantidade'":
+                return{
+                    "nome": `${faker.commerce.product()} ${faker.address.cityName()} ${faker.address.cityName()}`,
+                    "preco": faker.datatype.number({'min': 10, 'max': 9999}),
+                    "descricao": faker.lorem.sentence(),
+                }
         }
     }
     
@@ -201,6 +225,30 @@ export default class DynamicFactory {
                     "preco": faker.datatype.number({'min': 10, 'max': 9999}),
                     "descricao": faker.lorem.sentence(),
                     "quantidade": faker.datatype.number({'max': -1})
+                }
+            case "sem enviar a propriedade 'nome'":
+                return{
+                    "preco": faker.datatype.number({'min': 10, 'max': 9999}),
+                    "descricao": faker.lorem.sentence(),
+                    "quantidade": faker.datatype.number({'min': 4, 'max': 800})
+                }
+            case "sem enviar a propriedade 'preço'":
+                return{
+                    "nome": `${faker.commerce.product()} ${faker.address.cityName()} ${faker.address.cityName()}`,
+                    "descricao": faker.lorem.sentence(),
+                    "quantidade": faker.datatype.number({'min': 4, 'max': 800})
+                }
+            case "sem enviar a propriedade 'descrição'":
+                return{
+                    "nome": `${faker.commerce.product()} ${faker.address.cityName()} ${faker.address.cityName()}`,
+                    "preco": faker.datatype.number({'min': 10, 'max': 9999}),
+                    "quantidade": faker.datatype.number({'min': 4, 'max': 800})
+                }
+            case "sem enviar a propriedade 'quantidade'":
+                return{
+                    "nome": `${faker.commerce.product()} ${faker.address.cityName()} ${faker.address.cityName()}`,
+                    "preco": faker.datatype.number({'min': 10, 'max': 9999}),
+                    "descricao": faker.lorem.sentence(),
                 }
         }
     }
@@ -258,7 +306,23 @@ export default class DynamicFactory {
                         "quantidade": faker.datatype.number({'max': 0})
                       }
                     ]
-                  }           
+                  } 
+            case "sem enviar a propriedade quantidade":
+                return{
+                    "produtos": [
+                      {
+                        "idProduto": prodID,
+                      }
+                    ]
+                  } 
+            case "sem enviar a propriedade idProduto": 
+            return{
+                "produtos": [
+                  {
+                    "quantidade": faker.datatype.number({'min': 1, 'max': 2})
+                  }
+                ]
+              }          
         }
     }
 

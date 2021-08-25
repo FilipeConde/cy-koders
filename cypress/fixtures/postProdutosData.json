@@ -62,5 +62,37 @@
         "status": 400,
         "propriedade": "quantidade",
         "message": "quantidade deve ser maior ou igual a 0"
+    },
+    {
+        "auth": "valido",
+        "adm": "com permissão",
+        "tipo": "sem enviar a propriedade 'nome'",
+        "status": 400,
+        "propriedade": "nome",
+        "message": "nome é obrigatório"
+    },
+    {
+        "auth": "valido",
+        "adm": "com permissão",
+        "tipo": "sem enviar a propriedade 'preço'",
+        "status": 400,
+        "propriedade": "preco",
+        "message": "preco é obrigatório"
+    },
+    {
+        "auth": "valido",
+        "adm": "com permissão",
+        "tipo": "sem enviar a propriedade 'descrição'",
+        "status": 400,
+        "propriedade": "descricao",
+        "message": "descricao é obrigatório"
+    },
+    {
+        "auth": "valido",
+        "adm": "com permissão",
+        "tipo": "sem enviar a propriedade 'quantidade'",
+        "status": 400,
+        "propriedade": "quantidade",
+        "message": "quantidade é obrigatório"
     }
 ]

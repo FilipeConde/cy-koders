@@ -1,0 +1,28 @@
+[
+    {
+      "tipo": "ID válido",
+      "status": 200,
+      "propriedade": "idUsuario",
+      "expect": " com o ",
+      "message": "id do usuário relacionado ao carrinho"
+    },
+    
+    {
+        "tipo": "ID inválido",
+        "status": 400,
+        "propriedade": "message",
+        "expect": " com a mensagem ",
+        "message": "Carrinho não encontrado"
+      },
+
+      
+      {
+        "tipo": "nenhum ID",
+        "status": 200,
+        "propriedade": "quantidade",
+        "expect": " exibindo o total de produtos cadastrados maior que ",
+        "message": 1
+      }
+
+]
+   

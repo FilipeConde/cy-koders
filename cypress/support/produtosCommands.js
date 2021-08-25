@@ -30,7 +30,8 @@ Cypress.Commands.add('postProdutos', (typeProd, auth) => {
 })
 
 Cypress.Commands.add('getProdutos', (typeProd) => {
-
+      
+   
     let prodID
 
     switch(typeProd){

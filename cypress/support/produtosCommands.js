@@ -110,20 +110,26 @@ Cypress.Commands.add('deleteProdutos', (typeProd, auth) => {
     switch(typeProd){
         case 'ID válido':
             cy.postProdutos('valido').then(post_produtos_response  => {
-                return Rest.httpRequestWithoutBody('POST', `${URL_PRODUTOS}/${post_produtos_response}`, { authorization: auth }) 
+                return Rest.httpRequestWithoutBody('DELETE', `${URL_PRODUTOS}/${post_produtos_response.body._id}`, { authorization: auth }) 
              
             })
-            
             break;
 
         case 'ID inválido':
-            let usuarioInvalido = DynamicFactory.geradorID()
-            return Rest.httpRequestWithoutBody('DELETE', `${URL_USUARIOS}/${usuarioInvalido}`) 
+            let produtoInvalido = DynamicFactory.geradorID()
+            return Rest.httpRequestWithoutBody('DELETE', `${URL_PRODUTOS}/${produtoInvalido}`) 
+        
+        case 'Produto faz parte do carrinho':
+            cy.getProdutos('ID válido').then(get_produtos_response => {
+                cy.log(get_produtos_response.body.idCarrinho)
+                return Rest.httpRequestWithoutBody('DELETE', `${URL_PRODUTOS}/${get_produtos_response.body.idCarrinho}`) 
+            })
 
-        case 'Usuário com carrinho':
-           cy.getCarrinhos('ID válido').then(get_carrinhos_response => {
-               cy.log(get_carrinhos_response.body.idUsuario)
-               return Rest.httpRequestWithoutBody('DELETE', `${URL_USUARIOS}/${get_carrinhos_response.body.idUsuario}`) 
-           })
+        case 'Token ausente, inválido ou expirado':
+
+        case 'Rota exclusiva para administradores':
+
+        
+           
     }
 })

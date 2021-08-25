@@ -1,19 +1,22 @@
 [
     {
-      "tipo": "ID válido",
+      "auth": "valido",
+      "tipo": "existente",
       "status": 200,
       "propriedade": "message",
       "message": "Registro excluído com sucesso"
     },
 
     {
-        "tipo": "ID inválido",
+        "auth": "valido",
+        "tipo": "inexistente",
         "status": 200,
         "propriedade": "message",
         "message": "Nenhum registro excluído"
       },
 
     {
+       "auth": "valido",
        "tipo": "Produto faz parte do carrinho",   
        "status": 400,
        "propriedade": "message",
@@ -22,6 +25,7 @@
     },
     
     {
+        "auth": "invalido",
         "tipo": "Token ausente, inválido ou expirado",   
         "status": 401,
         "propriedade": "message",
@@ -36,6 +40,5 @@
         "message": "Rota exclusiva para administradores"  
  
      }
-
 
 ]  

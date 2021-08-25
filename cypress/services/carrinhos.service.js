@@ -5,10 +5,8 @@ export default class CarServ {
 
     static giveMeValidCarID(){
         cy.postLogin('valido').then(post_login_response => {
-            cy.postProdutos('valido', post_login_response.body.authorization).then(post_produto_response => {
-                cy.postCarrinhos('valido', 'valido', post_login_response.body.authorization).then(post_carrinhos_response => {
-                   cy.wrap(post_carrinhos_response).as('post_carrinhos_response')
-                })    
+            cy.postCarrinhos('valido', 'valido', post_login_response.body.authorization).then(post_carrinhos_response => {
+                cy.wrap(post_carrinhos_response).as('post_carrinhos_response')
             })
         })
     }    

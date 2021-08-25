@@ -9,36 +9,10 @@
 
     {
         "auth": "valido",
-        "tipo": "inexistente",
-        "status": 200,
+        "tipo": "Produto faz parte do carrinho",   
+        "status": 400,
         "propriedade": "message",
-        "message": "Nenhum registro excluído"
-      },
-
-    {
-       "auth": "valido",
-       "tipo": "Produto faz parte do carrinho",   
-       "status": 400,
-       "propriedade": "message",
-       "message": "Não é permitido excluir produto que faz parte de carrinho"  
-
-    },
-    
-    {
-        "auth": "invalido",
-        "tipo": "Token ausente, inválido ou expirado",   
-        "status": 401,
-        "propriedade": "message",
-        "message": "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais"  
- 
-     }, 
-     
-     {
-        "tipo": "Rota exclusiva para administradores",   
-        "status": 403,
-        "propriedade": "message",
-        "message": "Rota exclusiva para administradores"  
+        "message": "Não é permitido excluir produto que faz parte de carrinho"  
  
      }
-
 ]  

@@ -15,8 +15,12 @@ describe('Delete /produtos', () => {
             context(`Quando deletar um produto usando "${itensProdutos.tipo}"`, () => {
                 beforeEach(() => {
                     cy.get('@post_login_response').then(post_login_response => {
-                        cy.deleteProdutos
+                        let typeProd = itensProdutos.tipo
+                        cy.deleteProdutos(typeProd, post_login_response.body.authorization).then (delete_produtos_response => {
                             cy.wrap(delete_produtos_response).as('delete_produtos_response')
+
+                        })
+                            
                     })                    
                 })
                 it(`Então deverá ser retornado o schema "delete-produtos" com o status ${itensProdutos.status}`, () => {

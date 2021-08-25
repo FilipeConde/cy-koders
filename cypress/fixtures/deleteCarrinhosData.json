@@ -1,0 +1,63 @@
+[
+    {
+        "auth"   : "valido",
+        "tipo"   : "existente",
+        "objetivo": "concluir compra",
+        "status"  : 200,
+        "propriedade": "message",
+        "message": "Registro excluído com sucesso",
+        "complemento": ", onde a quatidade disponível de unidades do produto escolhido será ",
+        "resultado": "'menor'"
+    },
+        {
+        "auth"   : "valido",
+        "tipo"   : "inexistente",
+        "objetivo": "concluir compra",
+        "status"  : 200,
+        "propriedade": "message",
+        "message": "Não foi encontrado carrinho para esse usuário",
+        "complemento": "",
+        "resultado": ""
+    },
+        {
+        "auth"   : "invalido",
+        "tipo"   : "existente",
+        "objetivo": "concluir compra",
+        "status"  : 401,
+        "propriedade": "message",
+        "message": "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais",
+        "complemento": "",
+        "resultado": ""
+    },
+    {
+        "auth"   : "valido",
+        "tipo"   : "existente",
+        "objetivo": "cancelar compra",
+        "status"  : 200,
+        "propriedade": "message",
+        "message": "Registro excluído com sucesso. Estoque dos produtos reabastecido",
+        "complemento": ", onde a quatidade disponível de unidades do produto escolhido será ",
+        "resultado": "'sem alteração'"
+    },
+        {
+        "auth"   : "valido",
+        "tipo"   : "inexistente",
+        "objetivo": "cancelar compra",
+        "status"  : 200,
+        "propriedade": "message",
+        "message": "Não foi encontrado carrinho para esse usuário",
+        "complemento": "",
+        "resultado": ""
+    },
+        {
+        "auth"   : "invalido",
+        "tipo"   : "existente",
+        "objetivo": "cancelar compra",
+        "status"  : 401,
+        "propriedade": "message",
+        "message": "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais",
+        "complemento": "",
+        "resultado": ""
+    }
+
+]

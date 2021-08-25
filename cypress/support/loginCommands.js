@@ -3,7 +3,7 @@ import Rest from '../services/common/_rest.service'
 
 Cypress.Commands.add('bodyLogin', (typeLogin) => {
 
-    cy.getUsuarios(typeLogin).then( get_response => {                
+    cy.getUsuarios(typeLogin).then( get_response => {  
         let body = DynamicFactory.realizarLogin('valido')
         body.email = get_response.body.email
         body.password = get_response.body.password

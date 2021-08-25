@@ -111,3 +111,27 @@ Cypress.Commands.add('putUsuarios', (typeUser) => {
             break;
     } 
 })
+
+Cypress.Commands.add('deleteUsuarios', (typeUser) => {
+
+    switch(typeUser){
+        case 'ID válido':
+            cy.postUsuarios('valido').then(post_usuarios_response  => {
+              return Rest.httpRequestWithoutBody('DELETE', `${URL_USUARIOS}/${post_usuarios_response.body._id}`)  
+             
+            })
+            
+            break;
+
+        case 'ID inválido':
+            let usuarioInvalido = DynamicFactory.geradorID()
+            return Rest.httpRequestWithoutBody('DELETE', `${URL_USUARIOS}/${usuarioInvalido}`) 
+
+        case 'Usuário com carrinho':
+           cy.getCarrinhos('ID válido').then(get_carrinhos_response => {
+               cy.log(get_carrinhos_response.body.idUsuario)
+               return Rest.httpRequestWithoutBody('DELETE', `${URL_USUARIOS}/${get_carrinhos_response.body.idUsuario}`) 
+           })
+    }
+
+})

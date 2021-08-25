@@ -1,0 +1,23 @@
+[
+    {
+      "tipo": "ID válido",
+      "status": 200,
+      "propriedade": "message",
+      "message": "Registro excluído com sucesso"
+    },
+
+    {
+        "tipo": "ID inválido",
+        "status": 200,
+        "propriedade": "message",
+        "message": "Nenhum registro excluído"
+      },
+
+    {
+       "tipo": "Usuário com carrinho",   
+       "status": 400,
+       "propriedade": "message",
+       "message": "Não é permitido excluir usuário com carrinho cadastrado"  
+
+    }  
+]     

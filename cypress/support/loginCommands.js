@@ -27,6 +27,8 @@ Cypress.Commands.add('postLogin', (typeLogin) => {
         case 'sem preencher o email':
             let body = DynamicFactory.realizarLogin(typeLogin)
             return Rest.httpRequestWithBody('POST', '/login', body)
+        default:
+            return { notfound: cy.log('cy.postLogin - typeLogin não encontrado'), notfound: 'cy.postLogin - typeLogin não encontrado' }
     }
 
 })

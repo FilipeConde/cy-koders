@@ -8,7 +8,7 @@ describe('Delete /produtos', () => {
     dataProdutos.forEach(itensProdutos => {
         context(`Dado que esteja logado e com um usuário autenticado "${itensProdutos.auth}"`, () => {
             beforeEach(() => {
-                cy.postLogin('valido').then(post_response => {
+                cy.postLogin(itensProdutos.tipoUser).then(post_response => {
                     cy.wrap(post_response).as('post_login_response')
                 })
             })

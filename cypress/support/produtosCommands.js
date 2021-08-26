@@ -114,16 +114,42 @@ Cypress.Commands.add('deleteProdutos', (typeProd, auth) => {
              
             })
             break;
-            case 'Produto faz parte do carrinho':
-                cy.postCarrinhos('valido', 'valido', auth).then( post_carrinhos_response => {
-                    Rest.httpRequestWithoutBody('GET', `${'/carrinhos'}/${post_carrinhos_response.body._id}`).then(get_carrinhos_response => {
-                        let produto = get_carrinhos_response.body.produtos[0].idProduto
-                        Rest.httpRequestWithoutBody('DELETE', `${URL_PRODUTOS}/${produto}`, { authorization: auth }) 
 
-                    })
-
+        case 'Produto faz parte do carrinho':
+            cy.postCarrinhos('valido', 'valido', auth).then( post_carrinhos_response => {
+                Rest.httpRequestWithoutBody('GET', `${'/carrinhos'}/${post_carrinhos_response.body._id}`).then(get_carrinhos_response => {
+                    let produto = get_carrinhos_response.body.produtos[0].idProduto
+                    Rest.httpRequestWithoutBody('DELETE', `${URL_PRODUTOS}/${produto}`, { authorization: auth }) 
                 })
-      
-           
+            })
+            break;
+
+        case 'Token ausente, inválido ou expirado':
+            cy.postProdutos('valido', auth).then(post_produtos_response  => {
+                return Rest.httpRequestWithoutBody('DELETE', `${URL_PRODUTOS}/${post_produtos_response.body._id}`, {authorization: 'Token invalido'})    
+            })
+            break;
+
+        case 'Rota exclusiva para administradores':
+            cy.postProdutos('valido', auth).then(post_produtos_response => {
+                cy.get('@post_response').then (post_usuarios_response => {
+                     cy.log(post_usuarios_response.body._id)
+                     let body = DynamicFactory.criarUsuario('sem permissão')
+                     let bodyPutEmail = body.email
+                     let bodyPutSenha = body.password
+                     Rest.httpRequestWithBody('PUT', `/usuarios/${post_usuarios_response.body._id}`, body)
+                     body = DynamicFactory.realizarLogin('valido')
+                     body.email = bodyPutEmail
+                     body.password = bodyPutSenha  
+                     Rest.httpRequestWithBody('POST', `/login`, body).then(post_login_response => {
+                         cy.log(post_login_response.body.authorization)
+                         cy.wrap(post_login_response).as('post_login_response')
+                     })
+                })
+                cy.get('@post_login_response').then(post_login_response => {
+                    return Rest.httpRequestWithoutBody('DELETE', `${URL_PRODUTOS}/${post_produtos_response.body._id}`, {authorization: post_login_response.body.authorization})    
+                })
+
+            })
     }
 })

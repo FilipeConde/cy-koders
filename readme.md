@@ -33,7 +33,7 @@ ___________________________
 #### Mochawesome 
 [NPM MochaAwesome](https://www.npmjs.com/package/mochawesome)
 [More cypress reporting tutorial](https://docs.cypress.io/guides/tooling/reporters#Custom-reporter)
-[Vídeo instalação e confiuração](https://www.youtube.com/watch?v=01ftaohnMj0)
+[Vídeo instalação e configuração](https://www.youtube.com/watch?v=01ftaohnMj0)
 
 
 

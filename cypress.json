@@ -1,8 +1,19 @@
+
 {
     "video": false,
     "viewportWidth": 1600,
     "viewportHeight": 900,
     "chromeWebSecurity": false,
     "numTestsKeptInMemory": 1,
-    "testFiles": "**/*.spec.js"
+    "testFiles": "**/*.spec.js",
+    "reporter": "mochawesome",
+    "reporterOptions": {
+        "reportDir": "cypress/report/mochawesome-report",
+        "overwrite": true,
+        "html": true,
+        "json": false,
+        "timestamp": "mmddyyyy_HHMMss"
+    }    
 }
+
+

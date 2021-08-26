@@ -28,5 +28,15 @@ por Nayara Safenraider Crema
 por Bushra Alam (em inglês)
 
 ___________________________
+## Implementação do Mocha Reports com Mochawesome 
+
+#### Mochawesome 
+[NPM MochaAwesome](https://www.npmjs.com/package/mochawesome)
+[More cypress reporting tutorial](https://docs.cypress.io/guides/tooling/reporters#Custom-reporter)
+[Vídeo instalação e configuração](https://www.youtube.com/watch?v=01ftaohnMj0)
+
+
+
+___________________________
 
 _*fiquem à vontade para ampliar este documento;_

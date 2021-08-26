@@ -32,6 +32,7 @@ Cypress.Commands.add('postLogin', (typeLogin) => {
         default:
         return { notfound: cy.log('cy.postLogin - typeLogin não encontrado'), notfound: 'cy.postLogin - typeLogin não encontrado' }
         
+            
     }
 
 })

@@ -28,14 +28,34 @@ por Nayara Safenraider Crema
 por Bushra Alam (em inglês)
 
 ___________________________
-## Implementação do Mocha Reports com Mochawesome 
+## Implementação do Mocha Reports com Mochawesome
+
+    [1] Instalar o Mochawesome
+            npm install --save-dev mochawesome
+
+    [2] Especificar no arquivo de configuração cypress.json o package name e
+        as opções de comportamento, conforme abaixo:
+
+            {
+            "reporter": "mochawesome",
+            "reporterOptions": {
+                "reportDir": "cypress/report/mochawesome-report",
+                "overwrite": true,
+                "html": true,
+                "json": false,
+                "timestamp": "mm-dd-yyyy_HH'h'MM'm'ss's'"
+            }
+
+    [3] Criar o diretório onde serão armazenadas as informações de execução,
+        conforme foi especificado nas opções de comportamento.
+            Ex.: em "cypress/report/mochawesome-report"
+
+    [4] Executar o comando npx cypress run para gerar o relatório
 
 #### Mochawesome 
 [NPM MochaAwesome](https://www.npmjs.com/package/mochawesome)
 [More cypress reporting tutorial](https://docs.cypress.io/guides/tooling/reporters#Custom-reporter)
 [Vídeo instalação e configuração](https://www.youtube.com/watch?v=01ftaohnMj0)
-
-
 
 ___________________________
 

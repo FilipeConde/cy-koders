@@ -1,5 +1,6 @@
 node_modules
-cypress/report/mochawesome-report
+mochawesome-report
+mochawesome.json
 
 1-getting-started
 2-advanced-examples

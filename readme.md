@@ -30,27 +30,39 @@ por Bushra Alam (em inglês)
 ___________________________
 ## Implementação do Mocha Reports com Mochawesome
 
-    [1] Instalar o Mochawesome
-            npm install --save-dev mochawesome
+    [1] Instalar o mochawesome com mochawesome-merge
+            npm install --save-dev mochawesome mochawesome-merge mochawesome-report-generator
 
     [2] Especificar no arquivo de configuração cypress.json o package name e
         as opções de comportamento, conforme abaixo:
 
             {
-            "reporter": "mochawesome",
-            "reporterOptions": {
-                "reportDir": "cypress/report/mochawesome-report",
-                "overwrite": true,
-                "html": true,
-                "json": false,
-                "timestamp": "mm-dd-yyyy_HH'h'MM'm'ss's'"
+                "video": false,
+                "viewportWidth": 1600,
+                "viewportHeight": 900,
+                "chromeWebSecurity": false,
+                "numTestsKeptInMemory": 1,
+                "testFiles": "**/*.spec.js",
+                "reporter": "mochawesome",
+                "reporterOptions": {
+                    "reportDir": "mochawesome-report",
+                    "overwrite": true,
+                    "html": true,
+                    "json": true,
+                    "timestamp": "mm-dd-yyyy_HH'h'MM'm'ss's'"
+                }    
             }
 
-    [3] Criar o diretório onde serão armazenadas as informações de execução,
-        conforme foi especificado nas opções de comportamento.
-            Ex.: em "cypress/report/mochawesome-report"
-
-    [4] Executar o comando npx cypress run para gerar o relatório
+    [4] Executar o comando abaixo para gerar o relatório do teste 
+			npx cypress run --reporter mochawesome
+			
+	[5] Executar o comando abaixo para gerar o merge dos relatórios .json
+			npx mochawesome-merge "mochawesome-report/*.json" > mochawesome.json
+			
+	[6] Executar o comando abaixo para gerar o arquivo .html
+			npx marge mochawesome.json
+			
+	[7] Excluir o arquivo "mochawesome.json" gerado para realizar uma nova execução
 
 #### Mochawesome 
 [NPM MochaAwesome](https://www.npmjs.com/package/mochawesome)

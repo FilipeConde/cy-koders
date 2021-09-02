@@ -8,8 +8,7 @@ describe('Post /produtos', () => {
         context(`Dado que esteja logado com um usuário de Token "${itensProdutos.auth}" e "${itensProdutos.adm}" de administrador`, () => {
             beforeEach(() => {
                 cy.postLogin(itensProdutos.adm).then(post_response => {
-                    //post_response.body.authorization = itensProdutos.auth == 'inválido' ? cy.log('valor inválido'):cy.log('valor teste');
-                    if (itensProdutos.auth == 'inválido'){ post_response.body.authorization = 'valor inválido'}
+                    post_response.body.authorization = itensProdutos.auth == 'inválido' ? 'valor inválido' : post_response.body.authorization
                     cy.wrap(post_response).as('post_login_response')
                 })
             })

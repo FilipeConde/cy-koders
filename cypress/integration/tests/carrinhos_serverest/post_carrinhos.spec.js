@@ -8,8 +8,7 @@ describe('Post /carrinhos', () => {
         context(`Dado que esteja logado com um usuário de Token "${itensCarrinhos.auth}"`, () => {
             beforeEach(() => {
                 cy.postLogin('valido').then(post_response => {
-                    //post_response.body.authorization = itensProdutos.auth == 'inválido' ? cy.log('valor inválido'):cy.log('valor teste');
-                    if (itensCarrinhos.auth == 'inválido'){ post_response.body.authorization = 'valor inválido'}
+                    post_response.body.authorization = itensCarrinhos.auth == 'inválido' ? 'valor inválido' : post_response.body.authorization
                     cy.wrap(post_response).as('post_login_response')
                 })
             })
